@@ -1,0 +1,36 @@
+{
+  "movies_list": [
+    {
+      "movie_name": "Pinocchio",
+      "release_date": "1940",
+      "id": 2
+    },
+    {
+      "movie_name": "Fantasia",
+      "release_date": "1940",
+      "id": 3
+    },
+    {
+      "movie_name": "Dumbo",
+      "release_date": "1941",
+      "id": 4
+    },
+    {
+      "movie_name": "Frozen",
+      "release_date": "2013",
+      "id": 5
+    },
+    {
+      "movie_name": "Frozen 2",
+      "release_date": "2019",
+      "id": 6
+    }
+  ],
+  "My_Favorites": [
+    {
+      "movie_name": "Frozen",
+      "release_date": 2013,
+      "id": 1
+    }
+  ]
+}
