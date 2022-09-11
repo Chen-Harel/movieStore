@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginInAsysnc, selectUserName, selectLogged, selectToken } from "./loginSlice";
+import { TextField, Button } from "@mui/material";
 
 
 const Login = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const logged = useSelector(selectLogged);
-  const token = useSelector(selectToken);
+  const userToken = useSelector(selectToken);
 
   const [newUserName, setNewUserName] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -16,24 +17,26 @@ const Login = () => {
   return (
     <div>
       <br />
-      {userName && <div> Welcome: {userName}</div>}
-      {logged && <div>You are logged in successfully</div>}
-      {token && <div>Your token is: {token}</div>}
-      <input
+      {userName ? <div> Welcome: {userName}</div>:<div>Welcome: Please log in</div>}
+      {logged && <div>You have logged in successfully</div>}
+      {/* {logged && console.log({userToken})} */}
+      <TextField
+        size="small"
         placeholder="Username"
         onChange={(event) => setNewUserName(event.target.value)}
         type="text"
       />
       &nbsp;
-      <input
+      <TextField
+        size="small"
         placeholder="Password"
         onChange={(event) => setNewPassword(event.target.value)}
         type="password"
       />
       &nbsp;
-      <button onClick={()=>dispatch(loginInAsysnc({ username: newUserName, password: newPassword}))}>
+      <Button variant="contained" onClick={()=>dispatch(loginInAsysnc({ username: newUserName, password: newPassword}))}>
         Login
-      </button>
+      </Button>
       <hr />
     </div>
   );

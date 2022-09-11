@@ -14,7 +14,6 @@ export function getMoviesDB() {
 
 //A function that makes an async post request
 export function addMoviesDB(newMovie) {
-  console.log('two: ' + newMovie.userToken)
   return new Promise((resolve) =>
     axios
       .post(movieNameURL, newMovie, {

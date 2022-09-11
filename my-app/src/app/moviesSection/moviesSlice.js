@@ -19,7 +19,7 @@ export const getMoviesAsync = createAsyncThunk(
 export const addMoviesAsync = createAsyncThunk(
   "movies/addMoviesDB",
   async (newMovie) => {
-    console.log(newMovie.userToken)
+    // console.log(newMovie)
     const response = await addMoviesDB(newMovie);
     return response.data;
   }

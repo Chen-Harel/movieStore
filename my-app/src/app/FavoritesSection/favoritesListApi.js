@@ -4,11 +4,11 @@ import axios from "axios";
 const favoritesListURL = "http://127.0.0.1:8000/favorites/";
 
 // A function that makes an async get request for data
-export function getMyFavorites(token) {
+export function getMyFavorites(userToken) {
   return new Promise((resolve) =>
     axios(favoritesListURL, {
       headers: {
-        'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${userToken.userToken}`
       }
     }).then((res) => resolve({ data: res.data }))
   );
@@ -16,9 +16,14 @@ export function getMyFavorites(token) {
 
 //A function that makes an async post request
 export function addMyFavorites(newFavorite) {
+  // console.log(newFavorite)
   return new Promise((resolve) =>
     axios
-      .post(favoritesListURL, newFavorite)
+      .post(favoritesListURL, newFavorite,{
+        headers:{
+          'Authorization': `Bearer ${newFavorite.userToken}`
+        }
+      })
       .then((res) => resolve({ data: res.data }))
   );
 }

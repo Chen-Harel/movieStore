@@ -8,12 +8,16 @@ import {
 } from "./moviesSlice";
 import { addToMyFavoritesAsync } from "../FavoritesSection/favoritesListSlice";
 import { selectToken } from "../Login/loginSlice";
+import { Button, TextField } from "@mui/material/";
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddShoppingCart from '@mui/icons-material/AddShoppingCart';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+// import Typography from '@mui/material/Typography';
 
 const MyMovies = () => {
-  useEffect(() => {
-    dispatch(getMoviesAsync());
-  }, []);
-
   const dispatch = useDispatch(); //allow method calls from slicer
   const movie_list = useSelector(selectMovies); //get data from slicer
   const userToken = useSelector(selectToken); //get user token
@@ -21,55 +25,69 @@ const MyMovies = () => {
   const [MovieName, setMovieName] = useState("");
   const [ReleaseDate, setReleaseDate] = useState("");
 
+  useEffect(() => {
+    dispatch(getMoviesAsync());
+  }, []);
+
   return (
     <div>
       <br />
-      <input
+      <TextField
+        size="small"
         value={MovieName}
         placeholder="Movie name"
         onChange={(event) => setMovieName(event.target.value)}
       />
       &nbsp;
-      <input
+      <TextField
+        size="small"
         value={ReleaseDate}
         placeholder="Release Date"
         onChange={(event) => setReleaseDate(event.target.value)}
       />
       &nbsp;
-      <button
+      <Button
+        variant="contained"
         onClick={() =>
           dispatch(
             addMoviesAsync({
               movie_name: MovieName,
               release_date: ReleaseDate,
-              userToken:userToken
+              userToken: userToken,
             })
           )
         }
       >
         Add Movie
-      </button>
+      </Button>
       <hr />
       {movie_list.map((movie) => (
         <div key={movie.id}>
           {movie.movie_name}&nbsp;{movie.release_date}&nbsp;
-          <button
+          <Button
             onClick={() =>
               dispatch(
                 addToMyFavoritesAsync({
                   movie_name: movie.movie_name,
                   release_date: movie.release_date,
-                  userToken:userToken
+                  userToken: userToken,
                 })
               )
             }
           >
-            🤍
-          </button>
+            <AddShoppingCart />
+          </Button>
           &nbsp;
-          <button onClick={() => dispatch(removeMovieAsync({movieId:movie.id, userToken:userToken}))}>
-            Remove
-          </button>
+          <Button
+            variant="contained"
+            onClick={() =>
+              dispatch(
+                removeMovieAsync({ movieId: movie.id, userToken: userToken })
+              )
+            }
+          >
+            <DeleteIcon />
+          </Button>
         </div>
       ))}
     </div>
@@ -77,3 +95,5 @@ const MyMovies = () => {
 };
 
 export default MyMovies;
+
+

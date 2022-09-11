@@ -2,14 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {addMyFavorites,getMyFavorites,removeFromMyFavorites} from './favoritesListApi'
 const initialState = {
   MyFavoritesList: [],
-  stars: 0,
   status: "idle",
 };
 
 export const getMyFavoritesAsync = createAsyncThunk(
   "MyFavorites/getMyFavorites",
-  async (token) => {
-    const response = await getMyFavorites(token);
+  async () => {
+    // console.log(userFavorite)
+    const response = await getMyFavorites();
     return response.data;
   }
 );
@@ -17,6 +17,7 @@ export const getMyFavoritesAsync = createAsyncThunk(
 export const addToMyFavoritesAsync = createAsyncThunk(
   "MyFavorites/addMyFavorites",
   async (newFavorite) => {
+    // console.log(newFavorite)
     const response = await addMyFavorites(newFavorite);
     return response.data;
   }
@@ -51,6 +52,7 @@ export const MyFavoritesSlice = createSlice({
         // state.status = "loading";
       })
       .addCase(addToMyFavoritesAsync.fulfilled, (state, action) => {
+        // console.log(action.payload)
         state.MyFavoritesList.push(action.payload);
         state.status = "idle";
       })

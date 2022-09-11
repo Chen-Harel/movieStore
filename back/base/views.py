@@ -76,7 +76,7 @@ def getMovies(request,id=-1):
 @api_view(['GET','DELETE','POST'])
 @permission_classes([IsAuthenticated])
 def favorites(request, id=-1):
-    if request.method=='GET':
+    if request.method =='GET':
         res=[] #create an empty list
         for favoriteObj in Favorite.objects.all(): #run on every row in the table...
             res.append({"movie_name":favoriteObj.movie_name,
