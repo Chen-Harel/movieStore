@@ -1,11 +1,16 @@
 .App {
-  text-align: center;
+  display: grid;
+  align-items: center;
+  
 }
 
-footer{
+.footerSection footer{
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
+  border: 7px solid red;
+  display: block;
 }
+

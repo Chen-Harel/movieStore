@@ -12,6 +12,7 @@ class Movie(models.Model):
         return self.movie_name
 
 class Favorite(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     movie_name = models.CharField(max_length=50, null=True,blank=True)
     release_date = models.IntegerField(null=True,blank=True)
     _id=models.AutoField(primary_key=True, editable=False)

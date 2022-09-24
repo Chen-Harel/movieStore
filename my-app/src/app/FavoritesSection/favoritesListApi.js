@@ -16,7 +16,7 @@ export function getMyFavorites(userToken) {
 
 //A function that makes an async post request
 export function addMyFavorites(newFavorite) {
-  // console.log(newFavorite)
+  console.log(newFavorite)
   return new Promise((resolve) =>
     axios
       .post(favoritesListURL, newFavorite,{

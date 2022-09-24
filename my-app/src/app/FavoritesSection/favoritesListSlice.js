@@ -7,9 +7,9 @@ const initialState = {
 
 export const getMyFavoritesAsync = createAsyncThunk(
   "MyFavorites/getMyFavorites",
-  async () => {
-    // console.log(userFavorite)
-    const response = await getMyFavorites();
+  async (userFavorite) => {
+    console.log(userFavorite)
+    const response = await getMyFavorites(userFavorite.userToken);
     return response.data;
   }
 );
@@ -17,7 +17,7 @@ export const getMyFavoritesAsync = createAsyncThunk(
 export const addToMyFavoritesAsync = createAsyncThunk(
   "MyFavorites/addMyFavorites",
   async (newFavorite) => {
-    // console.log(newFavorite)
+    console.table(newFavorite)
     const response = await addMyFavorites(newFavorite);
     return response.data;
   }
@@ -48,12 +48,14 @@ export const MyFavoritesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getMyFavoritesAsync.fulfilled, (state, action) => {
+        
         state.MyFavoritesList = action.payload;
+        console.log(state.MyFavoritesList);
         // state.status = "loading";
       })
       .addCase(addToMyFavoritesAsync.fulfilled, (state, action) => {
-        // console.log(action.payload)
-        state.MyFavoritesList.push(action.payload);
+        console.log(action.meta.arg)
+        state.MyFavoritesList.push(action.meta.arg);
         state.status = "idle";
       })
       .addCase(removeFavoriteAsync.fulfilled, (state, action) => {

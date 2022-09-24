@@ -55,7 +55,7 @@ export const moviesSlice = createSlice({
         // state.status = "loading";
       })
       .addCase(addMoviesAsync.fulfilled, (state, action) => {
-        // console.log(action.payload)
+        // console.log(action)
         state.moviesList.push(action.payload);
         state.status = "idle";
       })
