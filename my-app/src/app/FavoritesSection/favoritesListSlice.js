@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {addMyFavorites,getMyFavorites,removeFromMyFavorites} from './favoritesListApi'
 const initialState = {
-  MyFavoritesList: [],
-  status: "idle",
+  MyFavoritesList: []
 };
 
 export const getMyFavoritesAsync = createAsyncThunk(
@@ -56,12 +55,10 @@ export const MyFavoritesSlice = createSlice({
       .addCase(addToMyFavoritesAsync.fulfilled, (state, action) => {
         console.log(action.meta.arg)
         state.MyFavoritesList.push(action.meta.arg);
-        state.status = "idle";
       })
       .addCase(removeFavoriteAsync.fulfilled, (state, action) => {
         console.log("deleted favorite")
         state.MyFavoritesList = state.MyFavoritesList.filter(fav => fav.id !== action.payload)
-        state.status="idle";
       })
   },
 });

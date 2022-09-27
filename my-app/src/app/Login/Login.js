@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginInAsysnc, selectUserName } from "./loginSlice";
+import { loginInAsysnc, selectUserName, logout } from "./loginSlice";
 // import { input, button } from "@mui/material";
 
 const Login = () => {
@@ -15,12 +15,10 @@ const Login = () => {
   return (
     <div>
       {userName ? (
-        <div> Welcome: {userName}</div>
+        <div>You are now logged in</div>
       ) : (
-        <div>Welcome: Please log in</div>
+        <div>Welcome! Please log in.</div>
       )}
-      {/* {logged && <div>You have logged in successfully</div>} */}
-      {/* {userToken} */}
       <input
         placeholder="Username"
         onChange={(event) => setNewUserName(event.target.value)}
