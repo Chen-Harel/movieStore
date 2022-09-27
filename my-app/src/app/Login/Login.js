@@ -14,7 +14,6 @@ const Login = () => {
 
   return (
     <div>
-      <br />
       {userName ? (
         <div> Welcome: {userName}</div>
       ) : (

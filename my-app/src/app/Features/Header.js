@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div>
         <h1 style={{ textDecoration: "underline" }}>Movie database</h1>
-        We currently have {movie_list.length} movies in our database!
+        We currently have {movie_list.length} movies in our database!<br /><br />
         <Outlet />
     </div>
   )

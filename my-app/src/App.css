@@ -9,8 +9,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  text-align: center;
   border: 7px solid red;
-  display: block;
+  height: 15%;
 }
 

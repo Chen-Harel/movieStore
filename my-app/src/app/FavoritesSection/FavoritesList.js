@@ -21,9 +21,9 @@ const FavoritesList = () => {
 
   return (
     <div>
-      <p>My Favorites</p>
+      <div>My Favorites</div>
 
-      {!loggedIn && <div>Please <Link to="/login">log in</Link> to view your favorites</div>}
+      {!loggedIn && <p>Please <Link to="/login">log in</Link> to view your favorites</p>}
 
       <div>
         {favorites_list.map((fav) => (
