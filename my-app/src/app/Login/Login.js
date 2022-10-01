@@ -15,9 +15,9 @@ const Login = () => {
   return (
     <div>
       {userName ? (
-        <div>You are now logged in</div>
+        <div> Welcome: {userName} <button onClick={()=>dispatch(logout())}>Logout</button></div>
       ) : (
-        <div>Welcome! Please log in.</div>
+        <div>Welcome: Please log in</div>
       )}
       <input
         placeholder="Username"

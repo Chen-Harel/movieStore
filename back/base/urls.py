@@ -4,7 +4,7 @@ from  .views import MyTokenObtainPairView
 from rest_framework_simplejwt.views import (TokenRefreshView,)
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.movies),
     path('movies/', views.movies),
     path('getmovies/', views.getMovies),
     path('movies/<id>', views.movies),

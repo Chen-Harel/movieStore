@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addMoviesDB, getMoviesDB, removeMovieDB } from "./moviesAPI";
 
-
 const initialState = {
   moviesList: [],
   stars: 0,
@@ -27,10 +26,10 @@ export const addMoviesAsync = createAsyncThunk(
 
 export const removeMovieAsync = createAsyncThunk(
   "movies/removeMovieDB",
-  async(id) => {
+  async (id) => {
     // console.log(id)
     const response = removeMovieDB(id);
-    return id
+    return id;
   }
 );
 
@@ -51,7 +50,7 @@ export const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getMoviesAsync.fulfilled, (state, action) => {
-        state.moviesList = action.payload
+        state.moviesList = action.payload;
         // state.status = "loading";
       })
       .addCase(addMoviesAsync.fulfilled, (state, action) => {
@@ -61,9 +60,11 @@ export const moviesSlice = createSlice({
       })
       .addCase(removeMovieAsync.fulfilled, (state, action) => {
         console.log("deleted movie");
-        state.moviesList = state.moviesList.filter(movie=>movie.id !== action.payload)
+        state.moviesList = state.moviesList.filter(
+          (movie) => movie.id !== action.payload
+        );
         state.status = "idle";
-      })
+      });
   },
 });
 

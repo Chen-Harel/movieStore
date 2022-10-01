@@ -18,7 +18,7 @@ root.render(
     <BrowserRouter>
     <Provider store={store}>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<App />} >
           <Route path="/movies" element={<MyMovies />} />
           <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/register" element={<Register />}/>

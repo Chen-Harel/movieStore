@@ -29,8 +29,8 @@ const FavoritesList = () => {
         {favorites_list.map((fav) => (
           <div key={fav.id}>
             {fav.movie_name}&nbsp;
-            <button onClick={() => dispatch(removeFavoriteAsync(fav.id))}>
-              <span>Remove from favorites</span>
+            <button onClick={() => dispatch(removeFavoriteAsync(fav=fav.id))}>
+              Remove from favorites
             </button>
           </div>
         ))}
