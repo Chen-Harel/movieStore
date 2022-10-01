@@ -16,6 +16,7 @@ export const getMyFavoritesAsync = createAsyncThunk(
 export const addToMyFavoritesAsync = createAsyncThunk(
   "MyFavorites/addMyFavorites",
   async (newFavorite) => {
+    console.log(newFavorite)
     const response = await addMyFavorites(newFavorite);
     return response.data;
   }
@@ -47,7 +48,6 @@ export const MyFavoritesSlice = createSlice({
     builder
       .addCase(getMyFavoritesAsync.fulfilled, (state, action) => {
         state.MyFavoritesList = action.payload;
-        
         // state.status = "loading";
       })
       .addCase(addToMyFavoritesAsync.fulfilled, (state, action) => {

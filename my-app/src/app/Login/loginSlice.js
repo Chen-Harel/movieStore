@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 const initialState = {
   userName: "",
   token: "",
+  user_id: "",
   logged: false,
 };
 
@@ -25,6 +26,7 @@ export const loginSlice = createSlice({
       state.token = "";
       state.logged = false;
       state.userName = "";
+      state.user_id = "";
     },
   },
   extraReducers: (builder) => {
@@ -33,6 +35,8 @@ export const loginSlice = createSlice({
         state.token = action.payload.access;
         state.logged = true;
         state.userName = jwt_decode(action.payload.access).username;
+        state.user_id = jwt_decode(action.payload.access).user_id;
+        // console.log(jwt_decode(action.payload.access).user_id);
       }
     });
   },
@@ -41,6 +45,7 @@ export const loginSlice = createSlice({
 export const { logout } = loginSlice.actions;
 export const selectLogged = (state) => state.login.logged;
 export const selectUserName = (state) => state.login.userName;
+export const selectUserID = (state) => state.login.user_id;
 export const selectToken = (state) => state.login.token;
 
 export default loginSlice.reducer;

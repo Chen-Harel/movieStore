@@ -7,7 +7,7 @@ import {
   removeMovieAsync,
 } from "./moviesSlice";
 import { addToMyFavoritesAsync } from "../FavoritesSection/favoritesListSlice";
-import { selectToken } from "../Login/loginSlice";
+import { selectToken, selectUserID } from "../Login/loginSlice";
 // import { selectMyFavorites } from "../FavoritesSection/favoritesListSlice";
 import { button, input } from "@mui/material/";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -22,6 +22,7 @@ const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
   const movie_list = useSelector(selectMovies); //get data from slicer
   const userToken = useSelector(selectToken); //get user token
+  const user_id = useSelector(selectUserID)
   // const MyFavorites = useSelector(selectMyFavorites);
 
   const [MovieName, setMovieName] = useState("");
@@ -69,6 +70,7 @@ const MyMovies = () => {
                         movie_name: movie.movie_name,
                         release_date: movie.release_date,
                         userToken: userToken,
+                        user_id: user_id,
                       })
                     )
                   }
