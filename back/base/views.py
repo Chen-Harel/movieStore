@@ -81,12 +81,13 @@ def favorites(request, id=-1):
         for favoriteObj in Favorite.objects.all(): #run on every row in the table...
             res.append({"movie_name":favoriteObj.movie_name,
             "release_date":favoriteObj.release_date,
-            "id":favoriteObj._id
+            "id":favoriteObj._id,
+            "user_id":favoriteObj.user
             }) #append row by to row to res list
         return JsonResponse(res,safe=False) #return array as json response
     if request.method == 'POST': #method post add new row
         movie_name =request.data['movie_name']
-        Favorite.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'])
+        Favorite.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], user_id=request.data['user_id'])
         return JsonResponse({'POST':"Success"})
     if request.method == 'DELETE': #method delete a row
         favorite_delete= Favorite.objects.get(_id = id)
