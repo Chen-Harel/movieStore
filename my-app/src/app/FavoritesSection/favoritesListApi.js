@@ -36,16 +36,21 @@ export function addMyFavorites(newFavorite) {
   );
 }
 
-export function removeFromMyFavorites(id) {
+export function removeFromMyFavorites(favoriteToRemove) {
+  console.log(favoriteToRemove)
   return new Promise((resolve) =>
     axios
-      .delete(deletefavoriteURL + id)
+      .delete(deletefavoriteURL + favoriteToRemove.favorite_id,{
+        headers:{
+          'Authorization': `Bearer ${favoriteToRemove.userToken}`
+        }
+      })
       .then((res) => resolve({ data: res.data }))
   );
 }
 
 export function buyMyFavorites(payload) {
-  console.log(payload)
+  // console.log(payload)
   return new Promise((resolve) =>
     axios
       .post(buyFavorites + payload.userID, {

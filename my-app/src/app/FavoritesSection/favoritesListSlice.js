@@ -30,9 +30,10 @@ export const addToMyFavoritesAsync = createAsyncThunk(
 
 export const removeFavoriteAsync = createAsyncThunk(
   "MyFavorites/removeFavorites",
-  async (id) => {
-    const response = await removeFromMyFavorites(id);
-    return id;
+  async (favoriteToRemove) => {
+    // console.log(payload)
+    const response = await removeFromMyFavorites(favoriteToRemove);
+    return response.data;
   }
 );
 

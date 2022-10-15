@@ -20,12 +20,11 @@ root.render(
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route path="/movies" element={<MyMovies />}>
+            <Route path="/movies" element={<MyMovies />} />
+            <Route path="/movie_details" element={<MovieDetails />} >
               <Route path=":movieid" element={<MovieDetails />} />
             </Route>
             <Route path="/favorites" element={<FavoritesList />}/>
-              {/* <Route path=":userid" element={<FavoritesList />} /> */}
-            {/* </Route> */}
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Route>

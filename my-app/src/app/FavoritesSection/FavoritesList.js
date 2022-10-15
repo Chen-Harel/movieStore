@@ -20,7 +20,7 @@ const FavoritesList = () => {
   // console.log(userID)
   useEffect(() => {
     dispatch(getMyFavoritesAsync({userToken, userID}));
-  }, []);
+  }, [favorites_list.length]);
 
 
   return (
@@ -33,15 +33,15 @@ const FavoritesList = () => {
 
       <div>
         {favorites_list.map((fav) => (
-          <div key={fav.id}>
+          <div key={fav.favorite_id}>
             {fav.movie_name}&nbsp;
-            <button onClick={() => dispatch(removeFavoriteAsync(fav=fav.id))}>
+            <button onClick={()=>dispatch(removeFavoriteAsync({userToken, favorite_id:fav.favorite_id}))}>
               Remove from favorites
             </button>
           </div>
         ))}
       </div>
-      <button onClick={() => dispatch(buyFavoritesAsync({userToken, userID}))}>Buy your favorites!</button>
+      <button onClick={() => dispatch(buyFavoritesAsync({userToken, userID, favorites_list}))}>Buy your favorites!</button>
     </div>
   );
 };

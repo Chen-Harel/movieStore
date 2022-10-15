@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {NavLink, useLocation, Outlet} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {
   selectMovies,
   getMoviesAsync,
@@ -107,7 +107,7 @@ const MyMovies = () => {
             Remove
           </button>
           &nbsp;
-          <NavLink key={movie.id} to={`/movies/${movie.id}`}>
+          <NavLink key={movie.id} to={`/movie_details/${movie.id}`}>
             Details
           </NavLink>
           

@@ -118,8 +118,9 @@ def deleteFavorite(request, id):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def buymyfavorites(request, id):
-    if int(id) > 0:
-        print(id)
+def buymyfavorites(request, user_id):
+    if request.method == 'POST':
+        if int(user_id) > 0:
+            Response(print(user_id))
     else:
-        return Response(print(id))
+        return Response(print(user_id))

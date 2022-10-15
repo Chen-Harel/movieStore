@@ -13,9 +13,10 @@ urlpatterns = [
     path('getfavorites/', views.getfavorites),
     path('getfavorites/<user_id>', views.getfavorites),
     path('addfavorite/', views.addFavorite),
+    path('deletefavorite/', views.deleteFavorite),
     path('deletefavorite/<id>', views.deleteFavorite),
     path('buymyfavorites/', views.buymyfavorites),
-    path('buymyfavorites/<id>', views.buymyfavorites),
+    path('buymyfavorites/<user_id>', views.buymyfavorites),
     # Login/Signin:
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
