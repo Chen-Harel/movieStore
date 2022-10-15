@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectLogged } from "../Login/loginSlice";
+import { selectLogged, selectToken, selectUserID } from "../Login/loginSlice";
 import {
   selectMyFavorites,
   getMyFavoritesAsync,
   removeFavoriteAsync,
+  buyFavoritesAsync,
 } from "./favoritesListSlice";
 import {Link} from 'react-router-dom';
 
@@ -12,17 +13,22 @@ const FavoritesList = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
   const favorites_list = useSelector(selectMyFavorites); //get data from slicer
 
+  const userID = useSelector(selectUserID);
+  const userToken = useSelector(selectToken);
   let loggedIn = useSelector(selectLogged);
 
+  // console.log(userID)
   useEffect(() => {
-    dispatch(getMyFavoritesAsync());
+    dispatch(getMyFavoritesAsync({userToken, userID}));
   }, []);
 
 
   return (
     <div>
-      <div>My Favorites</div>
+      <div>My Favorites ({favorites_list.length})</div>
+      
 
+      {/* <button onClick={()=>dispatch(getMyFavoritesAsync(userToken))}>Get favorites</button> */}
       {!loggedIn && <p>Please <Link to="/login">log in</Link> to view your favorites</p>}
 
       <div>
@@ -35,7 +41,7 @@ const FavoritesList = () => {
           </div>
         ))}
       </div>
-      <button>Buy your favorites!</button>
+      <button onClick={() => dispatch(buyFavoritesAsync({userToken, userID}))}>Buy your favorites!</button>
     </div>
   );
 };

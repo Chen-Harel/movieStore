@@ -1,5 +1,9 @@
+from urllib import response
 from django.http import JsonResponse
 from django.shortcuts import render
+from stack_data import Serializer
+
+from base.serializer import FavoriteSerializer
 from .models import Movie, Favorite
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
@@ -41,14 +45,14 @@ def createUser(request):
 def movies(request,id=-1):
     if request.method == 'POST': #method post add new row
         movie_name =request.data['movie_name']
-        Movie.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'])
+        Movie.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], movie_details=request.data['movie_details'])
         return JsonResponse({'POST':"Success"})
     if request.method == 'DELETE': #method delete a row
-        movie_delete= Movie.objects.get(_id = id)
+        movie_delete= Movie.objects.get(movie_id = id)
         movie_delete.delete()
         return JsonResponse({'DELETE SUCCESS': id})
     if request.method == 'PUT': #method delete a row
-        movie_update=Movie.objects.get(_id = id)
+        movie_update=Movie.objects.get(movie_id = id)
         movie_update.movie_name =request.data['movie_name']
         movie_update.release_date =request.data['release_date']
         movie_update.save()
@@ -59,37 +63,63 @@ def getMovies(request,id=-1):
     if request.method == 'GET':    #method get all
         if int(id) > -1: #get single movie
             if int(id)> Movie.objects.count(): return JsonResponse({"Server: array out of range"})
-            movie= Movie.objects.get(_id = id)
+            movie= Movie.objects.get(movie_id = id)
             return JsonResponse({
             "movie_name":movie.movie_name,
-            "release_date":movie.release_date
+            "release_date":movie.release_date,
+            "movie_details": movie.movie_details,
             },safe=False)
         else: # return all
             res=[] #create an empty list
             for movieObj in Movie.objects.all(): #run on every row in the table...
                 res.append({"movie_name":movieObj.movie_name,
-                "release_date":movieObj.release_date,
-               "id":movieObj._id
+                "release_date":movieObj.release_date, "movie_details":movieObj.movie_details,
+               "id":movieObj.movie_id
                 }) #append row by to row to res list
             return JsonResponse(res,safe=False) #return array as json response
 
-@api_view(['GET','DELETE','POST'])
+# favorites section
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def favorites(request, id=-1):
+def getfavorites(request, user_id=0):
     if request.method =='GET':
+        # if int(user_id) > 0:
+        #     print("test")
+        #     print(int(user_id))
+        # else:
         res=[] #create an empty list
-        for favoriteObj in Favorite.objects.all(): #run on every row in the table...
-            res.append({"movie_name":favoriteObj.movie_name,
-            "release_date":favoriteObj.release_date,
-            "id":favoriteObj._id,
-            "user_id":favoriteObj.user
-            }) #append row by to row to res list
-        return JsonResponse(res,safe=False) #return array as json response
+        favoriteList = Favorite.objects.filter(user_id=int(user_id))
+        # for favoriteObj in favoriteList: #run on every row in the table...
+        #     # print(int(id))
+        #     res.append({"movie_name":favoriteObj.movie_name,
+        #     "release_date":favoriteObj.release_date,
+        #     "id":favoriteObj.favorite_id,
+        #     }) #append row by to row to res list
+        # print(favoriteList)
+        serializer=FavoriteSerializer(favoriteList,many=True)
+        return Response(serializer.data)
+        # return JsonResponse(res,safe=False) #return array as json response
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def addFavorite(request):
     if request.method == 'POST': #method post add new row
         movie_name =request.data['movie_name']
         Favorite.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], user_id=request.data['user_id'])
         return JsonResponse({'POST':"Success"})
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def deleteFavorite(request, id):
     if request.method == 'DELETE': #method delete a row
-        favorite_delete= Favorite.objects.get(_id = id)
+        favorite_delete= Favorite.objects.get(favorite_id = id)
         favorite_delete.delete()
         return JsonResponse({'DELETE SUCCESS': id})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def buymyfavorites(request, id):
+    if int(id) > 0:
+        print(id)
+    else:
+        return Response(print(id))

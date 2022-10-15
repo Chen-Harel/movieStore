@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {NavLink, useLocation, Outlet} from "react-router-dom";
 import {
   selectMovies,
   getMoviesAsync,
@@ -9,24 +10,30 @@ import {
 import { addToMyFavoritesAsync } from "../FavoritesSection/favoritesListSlice";
 import { selectToken, selectUserID } from "../Login/loginSlice";
 // import { selectMyFavorites } from "../FavoritesSection/favoritesListSlice";
-import { button, input } from "@mui/material/";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+// import { button, input } from "@mui/material/";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
+// import Card from "@mui/material/Card";
+// import CardActions from "@mui/material/CardActions";
+// import CardContent from "@mui/material/CardContent";
+// import CardMedia from "@mui/material/CardMedia";
+// import Typography from "@mui/material/Typography";
+
+// function QueryNavLink({ to, ...props}){
+//   let location = useLocation();
+//   return <NavLink to={to + location.search} {...props} />;
+// }
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
   const movie_list = useSelector(selectMovies); //get data from slicer
   const userToken = useSelector(selectToken); //get user token
-  const user_id = useSelector(selectUserID)
+  const user_id = useSelector(selectUserID);
   // const MyFavorites = useSelector(selectMyFavorites);
 
   const [MovieName, setMovieName] = useState("");
   const [ReleaseDate, setReleaseDate] = useState("");
+  const [MovieDetails, setMovieDetails] = useState("");
 
   useEffect(() => {
     dispatch(getMoviesAsync(movie_list));
@@ -53,6 +60,7 @@ const MyMovies = () => {
             addMoviesAsync({
               movie_name: MovieName,
               release_date: ReleaseDate,
+              movie_details: MovieDetails,
               userToken: userToken,
             })
           )
@@ -60,43 +68,53 @@ const MyMovies = () => {
       >
         Add Movie
       </button>
+      <p>
+        <textarea
+          value={MovieDetails}
+          placeholder="Movie details"
+          onChange={(event) => setMovieDetails(event.target.value)}
+        />
+      </p>
       <hr />
       {movie_list.map((movie) => (
-        <div key={movie.id}>{movie.movie_name}&nbsp;{movie.release_date}
-                <button
-                  onClick={() =>
-                    dispatch(
-                      addToMyFavoritesAsync({
-                        movie_name: movie.movie_name,
-                        release_date: movie.release_date,
-                        userToken: userToken,
-                        user_id: user_id,
-                      })
-                    )
-                  }
-                >
-                  Add to cart
-                </button>
-                &nbsp;
-                <button
-                  onClick={() =>
-                    dispatch(
-                      removeMovieAsync({
-                        movieId: movie.id,
-                        userToken: userToken,
-                      })
-                    )
-                  }
-                >
-                  Remove
-                </button>
-          </div>
+        <div key={movie.id}>
+          {movie.movie_name}&nbsp;{movie.release_date}
+          <button
+            onClick={() =>
+              dispatch(
+                addToMyFavoritesAsync({
+                  movie_name: movie.movie_name,
+                  release_date: movie.release_date,
+                  userToken: userToken,
+                  user_id: user_id,
+                })
+              )
+            }
+          >
+            Add to cart
+          </button>
+          &nbsp;
+          <button
+            onClick={() =>
+              dispatch(
+                removeMovieAsync({
+                  movieId: movie.id,
+                  userToken: userToken,
+                })
+              )
+            }
+          >
+            Remove
+          </button>
+          &nbsp;
+          <NavLink key={movie.id} to={`/movies/${movie.id}`}>
+            Details
+          </NavLink>
+          
+        </div>
       ))}
-      {/* <button onClick={() => console.log(MyFavorites)}>Show FAv</button> */}
     </div>
   );
 };
 
 export default MyMovies;
-
-//2.9 navbar/bootstrap. Towards the end of the lesson he talks about saving the cart to the server.

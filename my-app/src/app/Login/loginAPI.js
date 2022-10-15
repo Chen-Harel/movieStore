@@ -7,8 +7,7 @@ const logout_URL = "http://127.0.0.1/logout/"
 export function loginUser(creds) {
   // console.log(creds)
   return new Promise((resolve) =>
-    axios
-      .post(login_URL, creds)
+    axios.post(login_URL, creds)
       .then((res) => resolve({ data: res.data }))
   );
 }
