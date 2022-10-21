@@ -50,7 +50,7 @@ export function removeFromMyFavorites(favoriteToRemove) {
 }
 
 export function buyMyFavorites(payload) {
-  // console.log(payload)
+  console.log(payload)
   return new Promise((resolve) =>
     axios
       .post(buyFavorites + payload.userID, {

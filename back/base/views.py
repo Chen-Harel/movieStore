@@ -118,9 +118,26 @@ def deleteFavorite(request, id):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def buymyfavorites(request, user_id):
-    if request.method == 'POST':
-        if int(user_id) > 0:
-            Response(print(user_id))
-    else:
-        return Response(print(user_id))
+def buymyfavorites(request):
+    user=request.user
+    favoritesList = request.data
+    print(user)
+    print(favoritesList)
+    return Response("Test")
+
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def addOrder(request):
+#     order= request.data
+#     user = request.user
+#     new_order_id= Order.objects.create(user_id=user)
+#     print(order)
+#     for x in order:
+#         # print(x)
+#         # product_id=x["product_id"]
+#         # print(product_id)
+#         prod_id=Product.objects.get(_id=x["product_id"])
+#         # category_id=Category.objects.get(_id=x["category_id"])
+#         quantity=x["quantity"]
+#         OrderDetail.objects.create(order_id
+

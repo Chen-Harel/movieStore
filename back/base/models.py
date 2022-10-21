@@ -21,3 +21,10 @@ class Favorite(models.Model):
 
     def __str__(self):
         return self.movie_name
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    movie_name = models.CharField(max_length=50, null=True,blank=True)
+    order_id = models.AutoField(primary_key=True, editable=False)
+    date_ordered = models.DateField(auto_now_add=True)
+    time_ordered = models.TimeField(auto_now_add=True)
