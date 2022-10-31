@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginInAsysnc, selectUserName, logout } from "./loginSlice";
+import { loginInAsysnc, selectUserName, logout, selectStaff } from "./loginSlice";
+
 // import { input, button } from "@mui/material";
 
 const Login = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
+  const userStaff = useSelector(selectStaff);
   // const logged = useSelector(selectLogged);
   // const userToken = useSelector(selectToken);
 
@@ -14,6 +16,7 @@ const Login = () => {
 
   return (
     <div>
+      staff: {userStaff && <div>yes</div>}
       {userName ? (
         <div> Welcome: {userName} <button onClick={()=>dispatch(logout())}>Logout</button></div>
       ) : (

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from stack_data import Serializer
 
 from base.serializer import FavoriteSerializer
-from .models import Movie, Favorite
+from .models import Movie, Favorite, Order
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -19,6 +19,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         # Add custom claims
         token['username'] = user.username
+        token['staff'] = user.is_staff
         # ...
         return token
 # Authentication code END
@@ -103,10 +104,8 @@ def getfavorites(request, user_id=0):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addFavorite(request):
-    if request.method == 'POST': #method post add new row
-        movie_name =request.data['movie_name']
-        Favorite.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], user_id=request.data['user_id'])
-        return JsonResponse({'POST':"Success"})
+    Favorite.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], user_id=request.data['user_id'])
+    return JsonResponse({'POST':"Success"})
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
@@ -119,11 +118,11 @@ def deleteFavorite(request, id):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def buymyfavorites(request):
-    user=request.user
+    user_id=request.user.id
     favoritesList = request.data
-    print(user)
+    print(user_id)
     print(favoritesList)
-    return Response("Test")
+    return Response(favoritesList)
 
 # @api_view(['POST'])
 # @permission_classes([IsAuthenticated])

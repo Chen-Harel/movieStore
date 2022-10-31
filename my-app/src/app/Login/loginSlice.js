@@ -7,6 +7,7 @@ const initialState = {
   token: "",
   user_id: "",
   logged: false,
+  staff: false,
 };
 
 export const loginInAsysnc = createAsyncThunk(
@@ -27,6 +28,7 @@ export const loginSlice = createSlice({
       state.logged = false;
       state.userName = "";
       state.user_id = "";
+      state.staff = false;
     },
   },
   extraReducers: (builder) => {
@@ -36,7 +38,7 @@ export const loginSlice = createSlice({
         state.logged = true;
         state.userName = jwt_decode(action.payload.access).username;
         state.user_id = jwt_decode(action.payload.access).user_id;
-        // console.log(jwt_decode(action.payload.access).user_id);
+        state.staff= jwt_decode(action.payload.access).staff;
       }
     });
   },
@@ -47,5 +49,6 @@ export const selectLogged = (state) => state.login.logged;
 export const selectUserName = (state) => state.login.userName;
 export const selectUserID = (state) => state.login.user_id;
 export const selectToken = (state) => state.login.token;
+export const selectStaff = (state) => state.login.staff;
 
 export default loginSlice.reducer;
