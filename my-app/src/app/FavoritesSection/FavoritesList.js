@@ -26,8 +26,6 @@ const FavoritesList = () => {
   return (
     <div>
       <div>My Favorites ({favorites_list.length})</div>
-      
-
       {/* <button onClick={()=>dispatch(getMyFavoritesAsync(userToken))}>Get favorites</button> */}
       {!loggedIn && <p>Please <Link to="/login">log in</Link> to view your favorites</p>}
 

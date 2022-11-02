@@ -14,20 +14,9 @@ import { grey } from "@mui/material/colors";
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import AddIcon from '@mui/icons-material/Add';
-// import { selectMyFavorites } from "../FavoritesSection/favoritesListSlice";
-// import { button, input } from "@mui/material/";
-// import DeleteIcon from "@mui/icons-material/Delete";
-// import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
-// import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
-// import CardContent from "@mui/material/CardContent";
-// import CardMedia from "@mui/material/CardMedia";
-// import Typography from "@mui/material/Typography";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-// function QueryNavLink({ to, ...props}){
-//   let location = useLocation();
-//   return <NavLink to={to + location.search} {...props} />;
-// }
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
@@ -50,19 +39,25 @@ const MyMovies = () => {
   return (
     <div>
       <br />
-      {isStaff && <span><input
+      {isStaff && <span><TextField
+        id= "outlined-basic"
+        label="Movie Name"
+        variant="outlined"
         value={MovieName}
-        placeholder="Movie name"
         onChange={(event) => setMovieName(event.target.value)}
       />
       &nbsp;
-      <input
+      <TextField
+        id= "outlined-basic"
+        label="Release Date"
+        variant="outlined"
         value={ReleaseDate}
         placeholder="Release Date"
         onChange={(event) => setReleaseDate(event.target.value)}
       />
       &nbsp;
-      <button
+      <Button
+        variant="contained"
         onClick={() =>
           dispatch(
             addMoviesAsync({
@@ -75,11 +70,14 @@ const MyMovies = () => {
         }
       >
         Add Movie
-      </button>
+      </Button>
       <p>
-        <textarea
+        <TextField
+          id="outlined-multiline-flexible"
+          label="Movie Details"
+          maxRows={10}
+          multiline
           value={MovieDetails}
-          placeholder="Movie details"
           onChange={(event) => setMovieDetails(event.target.value)}
         />
       </p></span>}
