@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
+import {logout} from "../Login/loginSlice"
 import InputBase from '@mui/material/InputBase';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -24,9 +25,10 @@ const About = <Link style={{textDecoration:'none', color: 'white'}} to="/aboutus
 const Login = <Link style={{textDecoration:'none', color: 'white'}} to="/login">Login</Link>
 const Register = <Link style={{textDecoration:'none', color: 'white'}} to="/register">Register</Link>
 const Favorites = <Link style={{textDecoration: 'none', color: 'black'}} to="/favorites">Favorites</Link>
+
 //Profile section
 const pages = [Movies, About, Login, Register, 'Contact'];
-const settings = [Favorites, 'Account', 'Logout'];
+const settings = [Favorites, 'Account'];
 
 //onClick={()=>dispatch(logout())}>Logout</button>
 

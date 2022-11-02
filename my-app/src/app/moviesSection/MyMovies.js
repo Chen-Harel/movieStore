@@ -11,12 +11,18 @@ import { addToMyFavoritesAsync } from "../FavoritesSection/favoritesListSlice";
 import { selectToken, selectUserID, selectStaff } from "../Login/loginSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { grey } from "@mui/material/colors";
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import AddIcon from '@mui/icons-material/Add';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import AddIcon from "@mui/icons-material/Add";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
+//Card imports
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
@@ -34,161 +40,125 @@ const MyMovies = () => {
     dispatch(getMoviesAsync(movie_list));
   }, [movie_list.length]);
 
-  
-
   return (
     <div>
       <br />
-      {isStaff && <span><TextField
-        id= "outlined-basic"
-        label="Movie Name"
-        variant="outlined"
-        value={MovieName}
-        onChange={(event) => setMovieName(event.target.value)}
-      />
-      &nbsp;
-      <TextField
-        id= "outlined-basic"
-        label="Release Date"
-        variant="outlined"
-        value={ReleaseDate}
-        placeholder="Release Date"
-        onChange={(event) => setReleaseDate(event.target.value)}
-      />
-      &nbsp;
-      <Button
-        variant="contained"
-        onClick={() =>
-          dispatch(
-            addMoviesAsync({
-              movie_name: MovieName,
-              release_date: ReleaseDate,
-              movie_details: MovieDetails,
-              userToken: userToken,
-            })
-          )
-        }
-      >
-        Add Movie
-      </Button>
-      <p>
-        <TextField
-          id="outlined-multiline-flexible"
-          label="Movie Details"
-          maxRows={10}
-          multiline
-          value={MovieDetails}
-          onChange={(event) => setMovieDetails(event.target.value)}
-        />
-      </p></span>}
-      {/* <input
-        value={MovieName}
-        placeholder="Movie name"
-        onChange={(event) => setMovieName(event.target.value)}
-      />
-      &nbsp;
-      <input
-        value={ReleaseDate}
-        placeholder="Release Date"
-        onChange={(event) => setReleaseDate(event.target.value)}
-      />
-      &nbsp;
-      <button
-        onClick={() =>
-          dispatch(
-            addMoviesAsync({
-              movie_name: MovieName,
-              release_date: ReleaseDate,
-              movie_details: MovieDetails,
-              userToken: userToken,
-            })
-          )
-        }
-      >
-        Add Movie
-      </button>
-      <p>
-        <textarea
-          value={MovieDetails}
-          placeholder="Movie details"
-          onChange={(event) => setMovieDetails(event.target.value)}
-        />
-      </p> */}
+      {isStaff && (
+        <span>
+          <TextField
+            id="outlined-basic"
+            label="Movie Name"
+            variant="outlined"
+            value={MovieName}
+            onChange={(event) => setMovieName(event.target.value)}
+          />
+          &nbsp;
+          <TextField
+            id="outlined-basic"
+            label="Release Date"
+            variant="outlined"
+            value={ReleaseDate}
+            placeholder="Release Date"
+            onChange={(event) => setReleaseDate(event.target.value)}
+          />
+          &nbsp;
+          <Button
+            variant="contained"
+            onClick={() =>
+              dispatch(
+                addMoviesAsync({
+                  movie_name: MovieName,
+                  release_date: ReleaseDate,
+                  movie_details: MovieDetails,
+                  userToken: userToken,
+                })
+              )
+            }
+          >
+            Add Movie
+          </Button>
+          <p>
+            <TextField
+              id="outlined-multiline-flexible"
+              label="Movie Details"
+              maxRows={10}
+              multiline
+              value={MovieDetails}
+              onChange={(event) => setMovieDetails(event.target.value)}
+            />
+          </p>
+        </span>
+      )}
       <hr />
       {movie_list.map((movie) => (
         <div key={movie.id}>
           {movie.movie_name}&nbsp;{movie.release_date}
           &nbsp;
-          {/* <button
-            className="border-radius"
-            onClick={() =>
-              dispatch(
-                addToMyFavoritesAsync({
-                  movie_name: movie.movie_name,
-                  release_date: movie.release_date,
-                  userToken: userToken,
-                  user_id: user_id,
-                })
-              )
-            }
-          > */}
-          <Tooltip title="Add to favorites" sx={{color: grey[900]}}
-            onClick={() =>
-              dispatch(
-                addToMyFavoritesAsync({
-                  movie_name: movie.movie_name,
-                  release_date: movie.release_date,
-                  userToken: userToken,
-                  user_id: user_id,
-                })
-              )
-            }
-          >
-            <IconButton>
-              <AddIcon />
-            </IconButton>
-          </Tooltip>
-          {/* </button> */}
+          
           &nbsp;
-          {/* <button
-            onClick={() =>
-              dispatch(
-                removeMovieAsync({
-                  movieId: movie.id,
-                  userToken: userToken,
-                })
-              )
-            }
-          > */}
-          {/* Remove */}
-          {/* <Fab size="small" sx={{color: red[500]}} onClick={() =>
-              dispatch(
-                removeMovieAsync({
-                  movieId: movie.id,
-                  userToken: userToken,
-                })
-              )
-            }>
-                <DeleteIcon />
-              </Fab> */}
-          {/* </button> */}
-          {isStaff && <span><Tooltip title="Delete" sx={{color: grey[900]}}  onClick={() =>
-              dispatch(
-                removeMovieAsync({
-                  movieId: movie.id,
-                  userToken: userToken,
-                })
-              )
-            }>
-            <IconButton>
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip></span>}
+          {isStaff && (
+            <span>
+              <Tooltip
+                title="Delete"
+                sx={{ color: grey[900] }}
+                onClick={() =>
+                  dispatch(
+                    removeMovieAsync({
+                      movieId: movie.id,
+                      userToken: userToken,
+                    })
+                  )
+                }
+              >
+                <IconButton>
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </span>
+          )}
           &nbsp;
           <NavLink key={movie.id} to={`/movie_details/${movie.id}`}>
             Details
           </NavLink>
         </div>
+      ))}
+
+      {/* Card Section */}
+      {movie_list.map((movie) => (
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            component="img"
+            height="140"
+            image={`https://picsum.photos/id/${movie.id}/200`}
+            alt={movie.movie_name}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {movie.movie_name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Release date: {movie.release_date}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="small"
+              onClick={() =>
+                dispatch(
+                  addToMyFavoritesAsync({
+                    movie_name: movie.movie_name,
+                    release_date: movie.release_date,
+                    userToken: userToken,
+                    user_id: user_id,
+                  })
+                )
+              }
+            >
+              Add to Favorites
+            </Button>
+            <Button size="small">More info</Button>
+          </CardActions>
+        </Card>
       ))}
     </div>
   );
