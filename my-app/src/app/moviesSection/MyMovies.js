@@ -156,7 +156,27 @@ const MyMovies = () => {
             >
               Add to Favorites
             </Button>
-            <Button size="small">More info</Button>
+            <Button disabled size="small">More info</Button>
+            {isStaff && (
+            <span>
+              <Tooltip
+                title="Delete"
+                sx={{ color: grey[900] }}
+                onClick={() =>
+                  dispatch(
+                    removeMovieAsync({
+                      movieId: movie.id,
+                      userToken: userToken,
+                    })
+                  )
+                }
+              >
+                <IconButton>
+                  <DeleteIcon />
+                </IconButton>
+              </Tooltip>
+            </span>
+          )}
           </CardActions>
         </Card>
       ))}

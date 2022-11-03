@@ -9,7 +9,7 @@ const MovieDetails = () => {
   return (
     <div>
         <h1>
-            {movie_list.map((movie) => <div>{movie.movie_details}</div>)}
+            {movie_list.map((movie) => <p>{movie.movie_details}</p>)}
         </h1>
     </div>
   )
