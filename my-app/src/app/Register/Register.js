@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUserAsync } from "./registerSlice";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -11,28 +13,37 @@ const Register = () => {
   return (
     <div>
       <br />
-      <input
+      <TextField
+        id="filled-basic"
+        label="Username"
+        variant="filled"
         value={username}
-        placeholder="Username"
         onChange={(event) => setUsername(event.target.value)}
         type="text"
+        required
       />
       &nbsp;
-      <input
+      <TextField
         value={password}
-        placeholder="Password"
+        id="filled-basic"
+        label="Password"
+        variant="filled"
         onChange={(event) => setPassword(event.target.value)}
         type="password"
+        required
       />
       &nbsp;
-      <input
+      <TextField
+        id="filled-basic"
+        label="Email"
+        variant="filled"
         value={email}
-        placeholder="Email"
         onChange={(event) => setEmail(event.target.value)}
         type="email"
+        required
       />
-      &nbsp;
-      <button
+      <br />
+      <Button
         onClick={() =>
           dispatch(
             addUserAsync({
@@ -45,7 +56,7 @@ const Register = () => {
         type="submit"
       >
         Register
-      </button>
+      </Button>
       <hr />
     </div>
   );

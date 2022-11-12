@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import {
   selectMovies,
   getMoviesAsync,
@@ -22,7 +21,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid"
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
@@ -91,9 +89,8 @@ const MyMovies = () => {
       )}
       <hr />
       {/* Card Section */}
-
       {movie_list.map((movie) => (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card className="movieCard" sx={{ maxWidth: 345, minWidth: 345, maxHeight: 345 }}>
           <CardMedia
             component="img"
             height="140"
@@ -102,7 +99,7 @@ const MyMovies = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {movie.movie_name}
+              {movie.movie_name.slice(0,25)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Release date: {movie.release_date}
@@ -124,31 +121,35 @@ const MyMovies = () => {
             >
               Add to Favorites
             </Button>
-            <Button disabled size="small">More info</Button>
+            <div>
+              <span className="grow" style={{ color: "blue" }}>
+                {movie.movie_details.slice(0,10)}...&nbsp;
+              </span>
+            </div>
             {isStaff && (
-            <span>
-              <Tooltip
-                title="Delete"
-                sx={{ color: grey[900] }}
-                onClick={() =>
-                  dispatch(
-                    removeMovieAsync({
-                      movieId: movie.id,
-                      userToken: userToken,
-                    })
-                  )
-                }
-              >
-                <IconButton>
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-            </span>
-          )}
+              <span>
+                <Tooltip
+                  title="Delete"
+                  sx={{ color: grey[900] }}
+                  onClick={() =>
+                    dispatch(
+                      removeMovieAsync({
+                        movieId: movie.id,
+                        userToken: userToken,
+                      })
+                    )
+                  }
+                >
+                  <IconButton>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
+              </span>
+            )}
           </CardActions>
         </Card>
       ))}
-    </div>
+      </div>
   );
 };
 

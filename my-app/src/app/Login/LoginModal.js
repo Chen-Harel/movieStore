@@ -2,7 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import Login from '../Login/Login';
+import CloseIcon from '@mui/icons-material/Close';
+import Login from './Login';
+import Register from '../Register/Register';
 
 const style = {
   position: 'absolute',
@@ -10,7 +12,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: '#eaecf0',
   border: '2px solid #000',
   boxShadow: 24,
   pt: 2,
@@ -29,7 +31,7 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen} disabled></Button>
+      <span>Don't have an account?</span><Button onClick={handleOpen}>Register here</Button>
       <Modal
         hideBackdrop
         open={open}
@@ -37,12 +39,12 @@ function ChildModal() {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 200 }}>
-          <h2 id="child-modal-title">Text in a child modal</h2>
+        <Box sx={{ ...style, width: 300 }}>
+        <Button sx={{marginLeft: 33.3,}} onClick={handleClose}><CloseIcon /></Button>
+          <h2 id="child-modal-title">Register now and start adding to your favorites!</h2>
           <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            <Register />
           </p>
-          <Button onClick={handleClose}>Close Child Modal</Button>
         </Box>
       </Modal>
     </React.Fragment>
@@ -70,7 +72,7 @@ export default function NestedModal() {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
-          <h2 id="parent-modal-title">Welcome to DMDB!</h2>
+          <h2 id="parent-modal-title">Welcome to DMDB! The largest Disney movie database on the web!</h2>
           <p id="parent-modal-description">
             <Login />
           </p>

@@ -7,7 +7,6 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyMovies from "./app/moviesSection/MyMovies";
 import FavoritesList from "./app/FavoritesSection/FavoritesList";
-import Register from "./app/Register/Register";
 import MovieDetails from "./app/moviesSection/MovieDetails";
 import About from "./app/Features/About";
 
@@ -26,7 +25,6 @@ root.render(
             </Route>
             <Route path="/aboutus" element={<About />} />
             <Route path="/favorites" element={<FavoritesList />}/>
-            <Route path="/register" element={<Register />} />
           </Route>
         </Routes>
       </Provider>

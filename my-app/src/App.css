@@ -1,7 +1,15 @@
+body{
+  /* background-image: url(./icons/Disney-Castle.jpg); */
+  background-color:rgb(209, 211, 216);
+  display: grid;
+  align-items: center;
+}
+
+
 :root {  
-    --purple: rgb(123, 31, 162);
-    --violet: rgb(103, 58, 183);
-    --pink: rgb(244, 143, 177);
+    --purple: rgb(59, 31, 162);
+    --violet: rgb(81, 58, 183);
+    --pink: rgb(165, 143, 244);
   }
   
   @keyframes background-pan {
@@ -71,10 +79,37 @@
       var(--purple)
     );
     background-size: 200%;
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
   }
+
+.textColorWhite{
+  color: white;
+}
+
+.grow {
+  padding: 5px 5px 5px 5px;
+  height: 100%;
+  width: 100%;
+  margin: 5px 1% 5px 1%;
+  float: left;
+  position: relative;
+  transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  text-align: center;
+  overflow: hidden;
+}
+/* .grow:hover {
+  height: 145px;
+} */
+
+.movieCard{
+  float: left;
+  position: relative;  
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
 
 .footerSection{
   position: fixed;
@@ -82,21 +117,4 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-}
-
-body{
-  /* background-image: url(./icons/Disney-Castle.jpg); */
-  background-color:rgb(209, 211, 216);
-}
-
-
-
-.textColorWhite{
-  color: white;
-}
-
-.component-bgc{
-  background-color: rgb(234, 236, 240);
-  max-width: 35em;
-  height: 20em;
 }

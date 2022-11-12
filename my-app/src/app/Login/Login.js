@@ -23,22 +23,25 @@ const Login = () => {
       ) : (
         <span></span>       
       )}
-      <div>Don't have an account? <span>Register here</span></div>
       <TextField
         id= "filled-basic"
         label="Username"
         variant="filled"
         onChange={(event) => setNewUserName(event.target.value)}
         type="text"
+        required
       />
       &nbsp;
       <TextField
-        id="outlined-basic"
+        id="filled-basic"
         label="Password"
+        variant="filled"
         onChange={(event) => setNewPassword(event.target.value)}
         type="password"
+        required
       />
-      &nbsp;
+      <br />
+      <br />
       <Button
         // variant="contained"
         onClick={() =>
@@ -49,6 +52,7 @@ const Login = () => {
       >
         Login
       </Button>
+      <hr />
     </div>
   );
 };
