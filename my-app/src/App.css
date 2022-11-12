@@ -75,4 +75,28 @@
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
   }
- 
+
+.footerSection{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+body{
+  /* background-image: url(./icons/Disney-Castle.jpg); */
+  background-color:rgb(209, 211, 216);
+}
+
+
+
+.textColorWhite{
+  color: white;
+}
+
+.component-bgc{
+  background-color: rgb(234, 236, 240);
+  max-width: 35em;
+  height: 20em;
+}

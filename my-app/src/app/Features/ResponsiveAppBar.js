@@ -17,17 +17,18 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
-
+import NestedModal from './LoginModal';
 
 //Main nav bar
 const Movies = <Link style={{textDecoration:'none', color: 'white'}} to="/movies">Movies</Link>
 const About = <Link style={{textDecoration:'none', color: 'white'}} to="/aboutus">About</Link>
-const Login = <Link style={{textDecoration:'none', color: 'white'}} to="/login">Login</Link>
 const Register = <Link style={{textDecoration:'none', color: 'white'}} to="/register">Register</Link>
 const Favorites = <Link style={{textDecoration: 'none', color: 'black'}} to="/favorites">Favorites</Link>
+const Login = <NestedModal />
+
 
 //Profile section
-const pages = [Movies, About, Login, Register, 'Contact'];
+const pages = [Movies, About, Register, 'Contact', Login];
 const settings = [Favorites, 'Account'];
 
 //onClick={()=>dispatch(logout())}>Logout</button>
@@ -50,6 +51,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
 
 
   const Search = styled('div')(({ theme }) => ({
@@ -228,7 +230,6 @@ function ResponsiveAppBar() {
     </AppBar>
   
 );
-}
-  ;
+};
 
 export default ResponsiveAppBar;

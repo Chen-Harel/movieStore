@@ -13,7 +13,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { grey } from "@mui/material/colors";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import AddIcon from "@mui/icons-material/Add";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -23,6 +22,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid"
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
@@ -90,40 +90,8 @@ const MyMovies = () => {
         </span>
       )}
       <hr />
-      {movie_list.map((movie) => (
-        <div key={movie.id}>
-          {movie.movie_name}&nbsp;{movie.release_date}
-          &nbsp;
-          
-          &nbsp;
-          {isStaff && (
-            <span>
-              <Tooltip
-                title="Delete"
-                sx={{ color: grey[900] }}
-                onClick={() =>
-                  dispatch(
-                    removeMovieAsync({
-                      movieId: movie.id,
-                      userToken: userToken,
-                    })
-                  )
-                }
-              >
-                <IconButton>
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-            </span>
-          )}
-          &nbsp;
-          <NavLink key={movie.id} to={`/movie_details/${movie.id}`}>
-            Details
-          </NavLink>
-        </div>
-      ))}
-
       {/* Card Section */}
+
       {movie_list.map((movie) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
