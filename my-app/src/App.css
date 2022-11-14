@@ -1,8 +1,6 @@
 body{
   /* background-image: url(./icons/Disney-Castle.jpg); */
   background-color:rgb(209, 211, 216);
-  display: grid;
-  align-items: center;
 }
 
 
@@ -99,10 +97,14 @@ body{
   -webkit-transition: height 0.5s;
   text-align: center;
   overflow: hidden;
-}
-/* .grow:hover {
+} 
+.grow:hover {
   height: 145px;
-} */
+} 
+
+.container{
+  margin-left: 150px;
+}
 
 .movieCard{
   float: left;

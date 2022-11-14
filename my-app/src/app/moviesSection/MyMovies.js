@@ -89,67 +89,72 @@ const MyMovies = () => {
       )}
       <hr />
       {/* Card Section */}
-      {movie_list.map((movie) => (
-        <Card className="movieCard" sx={{ maxWidth: 345, minWidth: 345, maxHeight: 345 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={`https://picsum.photos/id/${movie.id}/200`}
-            alt={movie.movie_name}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {movie.movie_name.slice(0,25)}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Release date: {movie.release_date}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              size="small"
-              onClick={() =>
-                dispatch(
-                  addToMyFavoritesAsync({
-                    movie_name: movie.movie_name,
-                    release_date: movie.release_date,
-                    userToken: userToken,
-                    user_id: user_id,
-                  })
-                )
-              }
-            >
-              Add to Favorites
-            </Button>
-            <div>
-              <span className="grow" style={{ color: "blue" }}>
-                {movie.movie_details.slice(0,10)}...&nbsp;
-              </span>
-            </div>
-            {isStaff && (
-              <span>
-                <Tooltip
-                  title="Delete"
-                  sx={{ color: grey[900] }}
-                  onClick={() =>
-                    dispatch(
-                      removeMovieAsync({
-                        movieId: movie.id,
-                        userToken: userToken,
-                      })
-                    )
-                  }
-                >
-                  <IconButton>
-                    <DeleteIcon />
-                  </IconButton>
-                </Tooltip>
-              </span>
-            )}
-          </CardActions>
-        </Card>
-      ))}
+      <div className="container">
+        {movie_list.map((movie) => (
+          <Card
+            className="movieCard"
+            sx={{ maxWidth: 345, minWidth: 345, maxHeight: 345 }}
+          >
+            <CardMedia
+              component="img"
+              height="140"
+              image={`https://picsum.photos/id/${movie.id}/200`}
+              alt={movie.movie_name}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {movie.movie_name.slice(0, 25)}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Release date: {movie.release_date}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                size="small"
+                onClick={() =>
+                  dispatch(
+                    addToMyFavoritesAsync({
+                      movie_name: movie.movie_name,
+                      release_date: movie.release_date,
+                      userToken: userToken,
+                      user_id: user_id,
+                    })
+                  )
+                }
+              >
+                Add to Favorites
+              </Button>
+              <div>
+                <span className="grow" style={{ color: "blue" }}>
+                  {movie.movie_details.slice(0, 10)}...&nbsp;
+                </span>
+              </div>
+              {isStaff && (
+                <span>
+                  <Tooltip
+                    title="Delete"
+                    sx={{ color: grey[900] }}
+                    onClick={() =>
+                      dispatch(
+                        removeMovieAsync({
+                          movieId: movie.id,
+                          userToken: userToken,
+                        })
+                      )
+                    }
+                  >
+                    <IconButton>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </span>
+              )}
+            </CardActions>
+          </Card>
+        ))}
       </div>
+    </div>
   );
 };
 
