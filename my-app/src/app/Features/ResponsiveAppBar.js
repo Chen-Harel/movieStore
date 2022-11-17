@@ -17,6 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import NestedModal from "../Login/LoginModal";
+import TemporaryDrawer from "./Drawer";
 
 //Main nav bar
 const Movies = (
@@ -193,7 +194,6 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -204,10 +204,11 @@ function ResponsiveAppBar() {
               disabled
             />
           </Search>
+          <TemporaryDrawer />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Profile Image" src="https://i.pravatar.cc/100" />
+              <IconButton sx={{ p: 0 }}>
+                  <Avatar onClick={handleOpenUserMenu} alt="Profile Image" src="https://i.pravatar.cc/100" />
               </IconButton>
             </Tooltip>
             <Menu
