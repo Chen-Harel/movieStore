@@ -21,6 +21,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import BasicModal from "./MovieDetailsModal";
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
@@ -33,6 +34,8 @@ const MyMovies = () => {
   const [MovieName, setMovieName] = useState("");
   const [ReleaseDate, setReleaseDate] = useState("");
   const [MovieDetails, setMovieDetails] = useState("");
+
+  const MovieDetailsButton = <BasicModal />;
 
   useEffect(() => {
     dispatch(getMoviesAsync(movie_list));
@@ -126,8 +129,9 @@ const MyMovies = () => {
                 Add to Favorites
               </Button>
               <div>
-                <span className="grow" style={{ color: "blue" }}>
-                  {movie.movie_details.slice(0, 10)}...&nbsp;
+                <span style={{ color: "blue" }}>
+                  {/* {movie.movie_details.slice(0, 10)}...&nbsp; */}
+                  {MovieDetailsButton}
                 </span>
               </div>
               {isStaff && (

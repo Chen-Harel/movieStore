@@ -10,14 +10,16 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+// import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
-import NestedModal from "../Login/LoginModal";
+// import NestedModal from "../Login/LoginModal";
 import TemporaryDrawer from "./Drawer";
+import BasicPopover from "./Popover";
+
 
 //Main nav bar
 const Movies = (
@@ -31,37 +33,30 @@ const About = (
   </Link>
 );
 
-const Favorites = (
-  <Link style={{ textDecoration: "none", color: "black" }} to="/favorites">
-    Favorites
-  </Link>
-);
-const Login = <NestedModal />;
-
-
-const pages = [Movies, About, "Contact", Login];
+const pages = [Movies, About, "Contact"];
 
 //Profile section
-const settings = [Favorites, "Account"];
+// const settings = ["Account", Login];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  // const [anchorElUser, setAnchorElUser] = React.useState(null);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -204,8 +199,9 @@ function ResponsiveAppBar() {
               disabled
             />
           </Search>
+          <BasicPopover />
           <TemporaryDrawer />
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile">
               <IconButton sx={{ p: 0 }}>
                   <Avatar onClick={handleOpenUserMenu} alt="Profile Image" src="https://i.pravatar.cc/100" />
@@ -233,7 +229,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

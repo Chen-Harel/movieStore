@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Login from './Login';
 import Register from '../Register/Register';
 
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -64,7 +65,7 @@ export default function NestedModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen} style={{color: 'white'}}>Login</Button>
+      <Button onClick={handleOpen} style={{fontWeight: 'normal', color: '#616161'}}>Login</Button>
       <Modal
         open={open}
         onClose={handleClose}

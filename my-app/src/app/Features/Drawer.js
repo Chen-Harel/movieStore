@@ -10,20 +10,22 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import NestedModal from '../Login/LoginModal';
+// import FavoritesList from '../FavoritesSection/FavoritesList';
+
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
-    // top: false,
-    // left: false,
-    // botton: false,
     Cart: false,
   });
+
+  const Login = <NestedModal />
+
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 
@@ -31,8 +33,8 @@ export default function TemporaryDrawer() {
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer(anchor, true)}
+      onKeyDown={toggleDrawer(anchor, true)}
     >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -44,11 +46,11 @@ export default function TemporaryDrawer() {
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
-        ))}
+        ))}        
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['All mail', 'Trash', Login].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -66,7 +68,7 @@ export default function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button style={{color: "white"}}onClick={toggleDrawer(anchor, true)}>cart</Button>
+          <Button style={{color: "white"}} onClick={toggleDrawer(anchor, true)}>Account</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
