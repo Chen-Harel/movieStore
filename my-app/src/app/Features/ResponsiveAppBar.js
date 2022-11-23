@@ -20,7 +20,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import TemporaryDrawer from "./Drawer";
 import BasicPopover from "./Popover";
 
-
 //Main nav bar
 const Movies = (
   <Link style={{ textDecoration: "none", color: "white" }} to="/movies">
@@ -41,7 +40,6 @@ const pages = [Movies, About, "Contact"];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   // const [anchorElUser, setAnchorElUser] = React.useState(null);
-
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -101,7 +99,7 @@ function ResponsiveAppBar() {
   }));
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{bgcolor: "green"}} position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link style={{ textDecoration: "none", color: "white" }} to="/">

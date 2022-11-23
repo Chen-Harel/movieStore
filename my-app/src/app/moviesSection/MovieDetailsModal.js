@@ -35,7 +35,6 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               {movie.movie_name}
