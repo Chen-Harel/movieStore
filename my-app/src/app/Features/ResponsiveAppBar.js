@@ -99,7 +99,7 @@ function ResponsiveAppBar() {
   }));
 
   return (
-    <AppBar sx={{bgcolor: "green"}} position="fixed">
+    <AppBar sx={{bgcolor: "#006E99"}} position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link style={{ textDecoration: "none", color: "white" }} to="/">
