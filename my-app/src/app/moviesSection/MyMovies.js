@@ -31,10 +31,6 @@ const MyMovies = () => {
   const isStaff = useSelector(selectStaff);
   // const MyFavorites = useSelector(selectMyFavorites);
 
-  const [MovieName, setMovieName] = useState("");
-  const [ReleaseDate, setReleaseDate] = useState("");
-  const [MovieDetails, setMovieDetails] = useState("");
-
   const MovieDetailsButton = <BasicModal />;
 
   useEffect(() => {
@@ -44,52 +40,6 @@ const MyMovies = () => {
   return (
     <div>
       <br />
-      {isStaff && (
-        <span>
-          <TextField
-            id="outlined-basic"
-            label="Movie Name"
-            variant="outlined"
-            value={MovieName}
-            onChange={(event) => setMovieName(event.target.value)}
-          />
-          &nbsp;
-          <TextField
-            id="outlined-basic"
-            label="Release Date"
-            variant="outlined"
-            value={ReleaseDate}
-            placeholder="Release Date"
-            onChange={(event) => setReleaseDate(event.target.value)}
-          />
-          &nbsp;
-          <Button
-            variant="contained"
-            onClick={() =>
-              dispatch(
-                addMoviesAsync({
-                  movie_name: MovieName,
-                  release_date: ReleaseDate,
-                  movie_details: MovieDetails,
-                  userToken: userToken,
-                })
-              )
-            }
-          >
-            Add Movie
-          </Button>
-          <p>
-            <TextField
-              id="outlined-multiline-flexible"
-              label="Movie Details"
-              maxRows={10}
-              multiline
-              value={MovieDetails}
-              onChange={(event) => setMovieDetails(event.target.value)}
-            />
-          </p>
-        </span>
-      )}
       <hr />
       {/* Card Section */}
       <div className="container">
@@ -126,34 +76,16 @@ const MyMovies = () => {
                   )
                 }
               >
+                <span className="buttonColor">
                 Add to Favorites
+                </span>
               </Button>
               <div>
                 <span style={{ color: "blue" }}>
-                  {/* {movie.movie_details.slice(0, 10)}...&nbsp; */}
+                  {/* {movie.movie_details.slice(0,10)}&nbsp; */}
                   {MovieDetailsButton}
                 </span>
               </div>
-              {isStaff && (
-                <span>
-                  <Tooltip
-                    title="Delete"
-                    sx={{ color: grey[900] }}
-                    onClick={() =>
-                      dispatch(
-                        removeMovieAsync({
-                          movieId: movie.id,
-                          userToken: userToken,
-                        })
-                      )
-                    }
-                  >
-                    <IconButton>
-                      <DeleteIcon />
-                    </IconButton>
-                  </Tooltip>
-                </span>
-              )}
             </CardActions>
           </Card>
         ))}

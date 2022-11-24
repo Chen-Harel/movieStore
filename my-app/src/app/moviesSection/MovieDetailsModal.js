@@ -27,27 +27,30 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>More info...</Button>
+      <Button onClick={handleOpen}>
+        <span className="buttonColor">More info...</span>
+      </Button>
+
       {movie_list.map((movie) => (
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               {movie.movie_name}
             </Typography>
             <Typography id="modal-modal-date" variant="subtitle1">
-                Released in {movie.release_date}
+              Released in {movie.release_date}
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               {movie.movie_details}
             </Typography>
           </Box>
-      </Modal>
-        ))}
+        </Modal>
+      ))}
     </div>
   );
 }

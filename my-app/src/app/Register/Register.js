@@ -55,7 +55,9 @@ const Register = () => {
         }
         type="submit"
       >
+        <span className="buttonColor">
         Register
+        </span>
       </Button>
       <hr />
     </div>

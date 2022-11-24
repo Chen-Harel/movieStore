@@ -32,7 +32,7 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <span>Don't have an account?</span><Button onClick={handleOpen}>Register here</Button>
+      <span>Don't have an account?</span><Button onClick={handleOpen}><span className="buttonColor">Register here</span></Button>
       <Modal
         hideBackdrop
         open={open}
@@ -41,7 +41,7 @@ function ChildModal() {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: 300 }}>
-        <Button sx={{marginLeft: 33.3,}} onClick={handleClose}><CloseIcon /></Button>
+        <Button sx={{marginLeft: 33.3,}} onClick={handleClose}><CloseIcon className="buttonColor" /></Button>
           <h2 id="child-modal-title">Register now and start adding to your favorites!</h2>
           <p id="child-modal-description">
             <Register />

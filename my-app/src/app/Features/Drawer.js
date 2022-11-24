@@ -11,8 +11,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import NestedModal from '../Login/LoginModal';
-// import FavoritesList from '../FavoritesSection/FavoritesList';
-
+import AdminMovieSection from '../adminTools/AdminMovieSection';
+import {Link} from "react-router-dom";
+import {selectStaff} from "../Login/loginSlice";
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -20,6 +21,7 @@ export default function TemporaryDrawer() {
   });
 
   const Login = <NestedModal />
+  const Admin_Movie_Section = <Link className="link-drawer-color" to="adminMovieSection">Admin Area</Link>
 
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -50,7 +52,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', Login].map((text, index) => (
+        {['All mail', Admin_Movie_Section, Login].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

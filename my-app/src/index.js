@@ -9,6 +9,7 @@ import MyMovies from "./app/moviesSection/MyMovies";
 import FavoritesList from "./app/FavoritesSection/FavoritesList";
 import MovieDetails from "./app/moviesSection/MovieDetails";
 import About from "./app/Features/About";
+import AdminMovieSection from "./app/adminTools/AdminMovieSection";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -23,6 +24,7 @@ root.render(
             <Route path="/movie_details" element={<MovieDetails />} >
               <Route path=":movieid" element={<MovieDetails />} />
             </Route>
+            <Route path="/adminMovieSection" element={<AdminMovieSection />} />
             <Route path="/aboutus" element={<About />} />
             <Route path="/favorites" element={<FavoritesList />}/>
           </Route>

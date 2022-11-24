@@ -1,6 +1,6 @@
 import React from "react";
-import linkedin from "../../icons/linkedin.png";
-import github from "../../icons/github.png";
+import linkedin from "../adminTools/icons/linkedin.png";
+import github from "../adminTools/icons/github.png";
 
 let year = new Date().getFullYear();
 const Footer = () => {

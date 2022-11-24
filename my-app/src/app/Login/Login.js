@@ -49,7 +49,9 @@ const Login = () => {
           )
         }
       >
+        <span className="buttonColor">
         Login
+        </span>
       </Button>
       <hr />
     </div>
