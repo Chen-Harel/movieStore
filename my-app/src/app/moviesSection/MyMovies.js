@@ -42,7 +42,7 @@ const MyMovies = () => {
       <br />
       <hr />
       {/* Card Section */}
-      <div className="container">
+      <div className="cardContainer">
         {movie_list.map((movie) => (
           <Card
             className="movieCard"
