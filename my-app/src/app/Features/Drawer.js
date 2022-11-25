@@ -10,8 +10,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import NestedModal from '../Login/LoginModal';
-import AdminMovieSection from '../adminTools/AdminMovieSection';
 import {Link} from "react-router-dom";
 import {selectStaff} from "../Login/loginSlice";
 
@@ -20,7 +18,6 @@ export default function TemporaryDrawer() {
     Cart: false,
   });
 
-  const Login = <NestedModal />
   const Admin_Movie_Section = <Link className="link-drawer-color" to="adminMovieSection">Admin Area</Link>
 
 
@@ -52,7 +49,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', Admin_Movie_Section, Login].map((text, index) => (
+        {['All mail', Admin_Movie_Section].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

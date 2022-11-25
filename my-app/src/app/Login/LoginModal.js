@@ -5,7 +5,8 @@ import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import Login from './Login';
 import Register from '../Register/Register';
-
+import {selectLogged, logout} from './loginSlice'
+import { useSelector, useDispatch } from 'react-redux';
 
 const style = {
   position: 'absolute',
@@ -30,8 +31,11 @@ function ChildModal() {
     setOpen(false);
   };
 
+  
   return (
     <React.Fragment>
+      <Button>Forgot password</Button>
+      <br />
       <span>Don't have an account?</span><Button onClick={handleOpen}><span className="buttonColor">Register here</span></Button>
       <Modal
         hideBackdrop
@@ -62,10 +66,13 @@ export default function NestedModal() {
   };
 
   
+  const isLoggedIn = useSelector(selectLogged);
+  const dispatch = useSelector(useDispatch);
+
 
   return (
     <div>
-      <Button onClick={handleOpen} style={{fontWeight: 'normal', color: '#616161'}}>Login</Button>
+      {isLoggedIn ? <Button style={{color: "#fff"}} onClick={() => dispatch(logout())}>Logout</Button>: (<Button onClick={handleOpen} style={{fontWeight: 'normal', color: '#fff'}}>Login</Button>)}
       <Modal
         open={open}
         onClose={handleClose}

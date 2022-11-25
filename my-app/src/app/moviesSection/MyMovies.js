@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectMovies,
   getMoviesAsync,
-  addMoviesAsync,
-  removeMovieAsync,
 } from "./moviesSlice";
 import { addToMyFavoritesAsync } from "../FavoritesSection/favoritesListSlice";
 import { selectToken, selectUserID, selectStaff } from "../Login/loginSlice";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { grey } from "@mui/material/colors";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import TextField from "@mui/material/TextField";
+
 import Button from "@mui/material/Button";
 
 //Card imports
@@ -22,13 +16,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import BasicModal from "./MovieDetailsModal";
+import CustomizedSnackbars from "../Features/SnackBar";
 
 const MyMovies = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
   const movie_list = useSelector(selectMovies); //get data from slicer
   const userToken = useSelector(selectToken); //get user token
   const user_id = useSelector(selectUserID);
-  const isStaff = useSelector(selectStaff);
   // const MyFavorites = useSelector(selectMyFavorites);
 
   const MovieDetailsButton = <BasicModal />;
@@ -76,10 +70,11 @@ const MyMovies = () => {
                   )
                 }
               >
-                <span className="buttonColor">
-                Add to Favorites
-                </span>
+                <CustomizedSnackbars>
+                  <span className="buttonColor">Add to Favorites</span>
+                </CustomizedSnackbars>
               </Button>
+
               <div>
                 <span style={{ color: "blue" }}>
                   {/* {movie.movie_details.slice(0,10)}&nbsp; */}

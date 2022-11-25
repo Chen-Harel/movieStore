@@ -7,7 +7,6 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyMovies from "./app/moviesSection/MyMovies";
 import FavoritesList from "./app/FavoritesSection/FavoritesList";
-import MovieDetails from "./app/moviesSection/MovieDetails";
 import About from "./app/Features/About";
 import AdminMovieSection from "./app/adminTools/AdminMovieSection";
 
@@ -21,9 +20,6 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/movies" element={<MyMovies />} />
-            <Route path="/movie_details" element={<MovieDetails />} >
-              <Route path=":movieid" element={<MovieDetails />} />
-            </Route>
             <Route path="/adminMovieSection" element={<AdminMovieSection />} />
             <Route path="/aboutus" element={<About />} />
             <Route path="/favorites" element={<FavoritesList />}/>

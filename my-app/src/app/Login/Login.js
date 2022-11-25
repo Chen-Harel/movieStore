@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginInAsysnc, selectUserName, logout } from "./loginSlice";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,16 +14,19 @@ const Login = () => {
   const [newUserName, setNewUserName] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
- 
   return (
-    <div>      
+    <div>
       {userName ? (
-        <div> Hello, {userName}! <Button onClick={()=>dispatch(logout())}>Logout</Button></div>
+        <div>
+          {" "}
+          Hello, {userName}!{" "}
+          <Button onClick={() => dispatch(logout())}>Logout</Button>
+        </div>
       ) : (
-        <span></span>       
+        <span></span>
       )}
       <TextField
-        id= "filled-basic"
+        id="filled-basic"
         label="Username"
         variant="filled"
         onChange={(event) => setNewUserName(event.target.value)}
@@ -49,9 +51,7 @@ const Login = () => {
           )
         }
       >
-        <span className="buttonColor">
-        Login
-        </span>
+        <span>Login</span>
       </Button>
       <hr />
     </div>
