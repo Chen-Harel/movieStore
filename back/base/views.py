@@ -45,8 +45,7 @@ def createUser(request):
 @permission_classes([IsAuthenticated])
 def movies(request,id=-1):
     if request.method == 'POST': #method post add new row
-        movie_name =request.data['movie_name']
-        Movie.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], movie_details=request.data['movie_details'])
+        Movie.objects.create(movie_name=request.data['movie_name'] ,release_date=request.data['release_date'], movie_price = request.data['movie_price'], movie_details=request.data['movie_details'])
         return JsonResponse({'POST':"Success"})
     if request.method == 'DELETE': #method delete a row
         movie_delete= Movie.objects.get(movie_id = id)

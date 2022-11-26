@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectMovies,
-  getMoviesAsync,
-} from "./moviesSlice";
+import { selectMovies, getMoviesAsync } from "./moviesSlice";
 import { addToMyFavoritesAsync } from "../FavoritesSection/favoritesListSlice";
-import { selectToken, selectUserID, selectStaff } from "../Login/loginSlice";
+import { selectToken, selectUserID } from "../Login/loginSlice";
 
 import Button from "@mui/material/Button";
 
@@ -54,6 +51,9 @@ const MyMovies = () => {
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 Release date: {movie.release_date}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Price: {movie.movie_price}
               </Typography>
             </CardContent>
             <CardActions>

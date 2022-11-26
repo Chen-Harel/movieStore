@@ -26,6 +26,7 @@ const AdminMovieSection = () => {
   const [MovieName, setMovieName] = useState("");
   const [ReleaseDate, setReleaseDate] = useState("");
   const [MovieDetails, setMovieDetails] = useState("");
+  const [MoviePrice, setMoviePrice] = useState("");
 
   useEffect(() => {
     dispatch(getMoviesAsync(movie_list));
@@ -53,21 +54,14 @@ const AdminMovieSection = () => {
             onChange={(event) => setReleaseDate(event.target.value)}
           />
           &nbsp;
-          <Button
-            variant="contained"
-            onClick={() =>
-              dispatch(
-                addMoviesAsync({
-                  movie_name: MovieName,
-                  release_date: ReleaseDate,
-                  movie_details: MovieDetails,
-                  userToken: userToken,
-                })
-              )
-            }
-          >
-            Add Movie
-          </Button>
+          <TextField
+            id="outlined-basic"
+            label="Movie Price"
+            variant="outlined"
+            value={MoviePrice}
+            placeholder="Movie Price"
+            onChange={(event) => setMoviePrice(event.target.value)}
+          />
           <p>
             <TextField
               id="outlined-multiline-flexible"
@@ -77,27 +71,49 @@ const AdminMovieSection = () => {
               value={MovieDetails}
               onChange={(event) => setMovieDetails(event.target.value)}
             />
+            &nbsp;
+            <Button
+              variant="contained"
+              onClick={() =>
+                dispatch(
+                  addMoviesAsync({
+                    movie_name: MovieName,
+                    release_date: ReleaseDate,
+                    movie_price: MoviePrice,
+                    movie_details: MovieDetails,
+                    userToken: userToken,
+                  })
+                )
+              }
+            >
+              Add Movie
+            </Button>
           </p>
           {movie_list.map((movie) => (
-            <div>{movie.movie_name}
-          
-          <Tooltip
-            title="Delete"
-            sx={{ color: grey[900] }}
-            onClick={() =>
-              dispatch(
-                removeMovieAsync({
-                  movieId: movie.id,
-                  userToken: userToken,
-                })
-              )
-            }
-          >
-            <IconButton>
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-          </div>
+            <div>
+              <div>
+                <span>{movie.movie_name}</span>
+                <br />
+                <span>Price: {movie.movie_price}</span>
+
+                <Tooltip
+                  title="Delete"
+                  sx={{ color: grey[900] }}
+                  onClick={() =>
+                    dispatch(
+                      removeMovieAsync({
+                        movieId: movie.id,
+                        userToken: userToken,
+                      })
+                    )
+                  }
+                >
+                  <IconButton>
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
+            </div>
           ))}
         </span>
       )}

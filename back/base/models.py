@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Movie(models.Model):
     movie_name = models.CharField(max_length=50,null=True,blank=True)
     release_date = models.IntegerField(null=True, blank=True)
+    movie_price = models.IntegerField(null=True, blank=True)
     movie_details = models.TextField(null=True, blank=True)
     movie_id=models.AutoField(primary_key=True,editable=False)
     fields =['movieid','desc','price']

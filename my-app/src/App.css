@@ -116,7 +116,7 @@ body{
 
 .cardContainer{
   margin-left: 150px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .movieCard{
@@ -127,7 +127,7 @@ body{
 }
 
 .footerSection{
-  border: 1px solid;
+  /* border: 1px solid; */
   position: fixed;
   left: 0;
   bottom: 0;
