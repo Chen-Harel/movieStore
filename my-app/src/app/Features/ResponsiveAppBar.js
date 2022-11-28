@@ -14,6 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import TemporaryDrawer from "./Drawer";
 import BasicPopover from "./Popover";
 import NestedModal from '../Login/LoginModal';
+import disney from '../adminTools/icons/disney.png';
 
 //Main nav bar
 const Movies = (
@@ -61,7 +62,8 @@ function ResponsiveAppBar() {
                 textDecoration: "none",
               }}
             >
-              DMDB
+              DMDB<img src={disney} alt="no image" width="40px"/>
+              {/* <a href="https://www.flaticon.com/free-icons/disney" title="disney icons">Disney icons created by Freepik - Flaticon</a> */}
             </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

@@ -12,6 +12,8 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Link} from "react-router-dom";
 import {selectStaff} from "../Login/loginSlice";
+import mickeyLogo from '../adminTools/icons/mickey_logo.png';
+
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -67,7 +69,7 @@ export default function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button style={{color: "white"}} onClick={toggleDrawer(anchor, true)}>Account</Button>
+          <Button style={{backgroundColor: "white",border: "2px solid #fff", borderRadius: "20px"}} onClick={toggleDrawer(anchor, true)}><img src={mickeyLogo} alt="mickey mouse icon" /></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

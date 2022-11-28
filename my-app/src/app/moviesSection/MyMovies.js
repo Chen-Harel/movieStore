@@ -53,7 +53,7 @@ const MyMovies = () => {
                 Release date: {movie.release_date}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Price: {movie.movie_price}
+                <span >Price: {movie.movie_price}</span>
               </Typography>
             </CardContent>
             <CardActions>

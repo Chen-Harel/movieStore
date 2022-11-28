@@ -7,6 +7,7 @@ import Login from './Login';
 import Register from '../Register/Register';
 import {selectLogged, logout} from './loginSlice'
 import { useSelector, useDispatch } from 'react-redux';
+import mickey_mouse from '../adminTools/icons/mickey_logo.png';
 
 const style = {
   position: 'absolute',
@@ -80,6 +81,7 @@ export default function NestedModal() {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
+          
           <h2 id="parent-modal-title">Welcome to DMDB! The largest Disney movie database on the web!</h2>
           <p id="parent-modal-description">
             <Login />

@@ -6,7 +6,7 @@ import {
   addMoviesAsync,
   removeMovieAsync,
 } from "../moviesSection/moviesSlice";
-import { selectToken, selectUserID, selectStaff } from "../Login/loginSlice";
+import { selectToken, selectStaff } from "../Login/loginSlice";
 import Button from "@mui/material/Button";
 
 import TextField from "@mui/material/TextField";
@@ -19,9 +19,7 @@ const AdminMovieSection = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
   const movie_list = useSelector(selectMovies); //get data from slicer
   const userToken = useSelector(selectToken); //get user token
-  //   const user_id = useSelector(selectUserID);
   const isStaff = useSelector(selectStaff);
-  // const MyFavorites = useSelector(selectMyFavorites);
 
   const [MovieName, setMovieName] = useState("");
   const [ReleaseDate, setReleaseDate] = useState("");
@@ -34,9 +32,9 @@ const AdminMovieSection = () => {
 
   return (
     <div>
-      <h2>As admin, you will be able to add/remove movies from here.</h2>
-      {isStaff && (
+      {isStaff ? (
         <span>
+          <h2>As admin, you will be able to add/remove movies from here.</h2>
           <TextField
             id="outlined-basic"
             label="Movie Name"
@@ -92,8 +90,9 @@ const AdminMovieSection = () => {
           {movie_list.map((movie) => (
             <div>
               <div>
-                <span>{movie.movie_price}</span>
+                <span>{movie.movie_name}</span>
                 <br />
+                <span>Price: {movie.movie_price}</span>
 
                 <Tooltip
                   title="Delete"
@@ -115,6 +114,8 @@ const AdminMovieSection = () => {
             </div>
           ))}
         </span>
+      ) : (
+        <span>You aren't authorized to view this page!</span>
       )}
     </div>
   );

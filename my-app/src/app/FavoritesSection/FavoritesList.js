@@ -10,6 +10,7 @@ import {
 import { IconButton, Tooltip } from "@mui/material";
 import Delete from "@mui/icons-material/Delete";
 import NestedModal from "../Login/LoginModal";
+import {Link} from "react-router-dom";
 
 const FavoritesList = () => {
   const dispatch = useDispatch(); //allow method calls from slicer
@@ -27,7 +28,11 @@ const FavoritesList = () => {
   return (
     <div>
       {/* <div>My Favorites ({favorites_list.length})</div> */}
-      {!loggedIn && <div style={{textAlign: "center"}}>{Login} to view your favorites</div>}
+      {!loggedIn && (
+        <div style={{ textAlign: "center" }}>
+          <span>{Login}</span> to view your favorites
+        </div>
+      )}
 
       <div>
         {favorites_list.map((fav) => (
@@ -52,13 +57,15 @@ const FavoritesList = () => {
           </div>
         ))}
       </div>
-      <button
-        onClick={() =>
-          dispatch(buyFavoritesAsync({ userToken, userID, favorites_list }))
-        }
-      >
-        Buy your favorites!
-      </button>
+      <Link className="purchase-link" to="/purchaseSuccessful">
+        {/* <button
+          onClick={() =>
+            dispatch(buyFavoritesAsync({ userToken, userID, favorites_list }))
+          }
+        > */}
+          Buy your favorites!
+        {/* </button> */}
+      </Link>
     </div>
   );
 };

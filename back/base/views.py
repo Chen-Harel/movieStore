@@ -67,13 +67,14 @@ def getMovies(request,id=-1):
             return JsonResponse({
             "movie_name":movie.movie_name,
             "release_date":movie.release_date,
+            "movie_price":movie.movie_price,
             "movie_details": movie.movie_details,
             },safe=False)
         else: # return all
             res=[] #create an empty list
             for movieObj in Movie.objects.all(): #run on every row in the table...
                 res.append({"movie_name":movieObj.movie_name,
-                "release_date":movieObj.release_date, "movie_details":movieObj.movie_details,
+                "release_date":movieObj.release_date,"movie_price":movieObj.movie_price, "movie_details":movieObj.movie_details,
                "id":movieObj.movie_id
                 }) #append row by to row to res list
             return JsonResponse(res,safe=False) #return array as json response

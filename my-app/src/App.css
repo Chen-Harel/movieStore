@@ -117,6 +117,14 @@ body{
 }
 
 
+.purchase-link{
+  color: #fff;
+  background-color: #006E99;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .cardContainer{
   margin-left: 150px;
 }
