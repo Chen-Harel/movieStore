@@ -92,9 +92,8 @@ const AdminMovieSection = () => {
           {movie_list.map((movie) => (
             <div>
               <div>
-                <span>{movie.movie_name}</span>
+                <span>{movie.movie_price}</span>
                 <br />
-                <span>Price: {movie.movie_price}</span>
 
                 <Tooltip
                   title="Delete"

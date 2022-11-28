@@ -40,6 +40,10 @@ body{
     }
   }
   
+.center-items{
+  text-align: center;
+}
+
   h3 > .magic {
     display: inline-block;
     position: relative;
@@ -104,19 +108,17 @@ body{
   text-align: center;
   overflow: hidden;
 } 
-.grow:hover {
+/* .grow:hover {
   height: 145px;
-} 
+}  */
 
 .buttonColor{
   color: #006E99;
 }
 
 
-
 .cardContainer{
   margin-left: 150px;
-  /* border: 1px solid red; */
 }
 
 .movieCard{
