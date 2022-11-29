@@ -6,8 +6,8 @@ const About = () => {
     <div>
       <br />
       <hr />
-      <div className="center-items">
-        <img src={Walt_Disney_About} alt="Disney" />
+      <div className="center-items">        
+        <img className="waltDisneyImage" src={Walt_Disney_About} alt="Disney" />
         <div className="disney-font">
           <h1>Disney History</h1>
           <img

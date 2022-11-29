@@ -120,6 +120,7 @@ body{
 .purchase-link{
   color: #fff;
   background-color: #006E99;
+  border-radius: 3rem;
   text-decoration: none;
   padding-left: 10px;
   padding-right: 10px;
@@ -147,6 +148,10 @@ body{
   margin-inline: auto;
 }
 
+.waltDisneyImage{
+  max-width: 100%;
+  height: auto;
+}
 
 .footerSection{
   display: flex;

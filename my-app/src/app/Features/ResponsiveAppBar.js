@@ -18,7 +18,7 @@ import disney from '../adminTools/icons/disney.png';
 
 //Main nav bar
 const Movies = (
-  <Link style={{ textDecoration: "none", color: "white" }} to="/movies">
+  <Link style={{ textDecoration: "none", color: "white"}} to="/movies">
     Movies
   </Link>
 );
@@ -62,7 +62,7 @@ function ResponsiveAppBar() {
                 textDecoration: "none",
               }}
             >
-              DMDB<img src={disney} alt="no image" width="40px"/>
+              DMDB<img src={disney} alt="Disney Castle" width="40px"/>
               {/* <a href="https://www.flaticon.com/free-icons/disney" title="disney icons">Disney icons created by Freepik - Flaticon</a> */}
             </Typography>
           </Link>
@@ -92,22 +92,22 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: "block", md: "none", },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem style={{backgroundColor:"#006E99", color:"#fff", }} key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <img src={disney} alt="Disney Castle" width="40px" style={{ display: { xs: "flex", md: "none" }, mr: 1 }}/> */}
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -126,7 +126,7 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white", display: "block", }}
               >
                 {page}
               </Button>

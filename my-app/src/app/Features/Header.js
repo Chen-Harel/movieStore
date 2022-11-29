@@ -27,7 +27,7 @@ for (const star of document.getElementsByClassName("magic-star")) {
 const Header = () => {
   // const movie_list = useSelector(selectMovies); //get data from slicer
   return (
-    <div style={{textAlign:"center", fonstSize: 35, marginTop: "100px"}}>
+    <div style={{textAlign:"center", fonstSize: 35, marginTop: "100px",}}>
       <h3>
         The most&nbsp;
         <span className="magic">
