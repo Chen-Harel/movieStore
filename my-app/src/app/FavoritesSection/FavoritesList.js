@@ -29,7 +29,7 @@ const FavoritesList = () => {
     <div>
       {/* <div>My Favorites ({favorites_list.length})</div> */}
       {!loggedIn && (
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", color: "black" }}>
           <span>{Login}</span> to view your favorites
         </div>
       )}
