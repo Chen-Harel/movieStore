@@ -115,7 +115,7 @@ const AdminMovieSection = () => {
           ))}
         </span>
       ) : (
-        <span>You aren't authorized to view this page!</span>
+        <h2 style={{textAlign:"center"}}>You aren't authorized to view this page!</h2>
       )}
     </div>
   );

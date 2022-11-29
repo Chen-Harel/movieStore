@@ -1,7 +1,6 @@
 import React from "react";
 // import { useSelector } from "react-redux";
 // import { selectMovies } from "../moviesSection/moviesSlice";
-import { Outlet } from "react-router-dom";
 
 let index = 0,
   interval = 1000;
@@ -28,8 +27,7 @@ for (const star of document.getElementsByClassName("magic-star")) {
 const Header = () => {
   // const movie_list = useSelector(selectMovies); //get data from slicer
   return (
-    <div>
-      <h1 style={{ fontSize: 35, paddingBottom: 0}}>Disney Movie DataBase</h1>
+    <div style={{textAlign:"center", fonstSize: 35, marginTop: "100px"}}>
       <h3>
         The most&nbsp;
         <span className="magic">
@@ -52,9 +50,6 @@ const Header = () => {
         </span>
         &nbsp;place on the web!
       </h3>
-      <br />
-      <br />
-      <Outlet />
     </div>
   );
 };

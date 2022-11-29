@@ -100,7 +100,7 @@ body{
   padding: 5px 5px 5px 5px;
   height: 100%;
   width: 100%;
-  margin: 5px 1% 5px 1%;
+  /* margin: 5px 1% 5px 1%; */
   float: left;
   position: relative;
   transition: height 0.5s;
@@ -127,6 +127,7 @@ body{
 
 .cardContainer{
   margin-left: 150px;
+  display: inline-block;
 }
 
 .movieCard{
@@ -136,12 +137,22 @@ body{
   margin-bottom: 5px;
 }
 
+.disney-font{
+  font-size: 40px;
+  font-family:'Ms Madi', cursive;
+}
+
+.disney-history{
+  height: 100vh;
+  margin-inline: auto;
+}
+
+
 .footerSection{
-  /* border: 1px solid; */
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding-top: 75px; 
+  background-color: beige;
 }
 

@@ -15,6 +15,8 @@ const Footer = () => {
         <a href="https://github.com/Chen-Harel" target={"_blank"} rel={"noreferrer"}>
           <img src={github} alt={"github-link"}></img>
         </a>
+        <br />
+        <span className="disney-font">Disney - Where dreams come true</span>
       </footer>
       {/* Icon Attribution */}
       {/* <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons">Linkedin icons created by riajulislam - Flaticon</a> */}

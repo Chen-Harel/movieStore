@@ -12,6 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Link} from "react-router-dom";
 import {selectStaff} from "../Login/loginSlice";
+import {useSelector} from "react-redux";
 import mickeyLogo from '../adminTools/icons/mickey_logo.png';
 
 
@@ -29,6 +30,8 @@ export default function TemporaryDrawer() {
     }
     setState({ ...state, [anchor]: open });
   };
+
+  const isStaff = useSelector(selectStaff)
 
   const list = (anchor) => (
     <Box
@@ -50,8 +53,9 @@ export default function TemporaryDrawer() {
         ))}        
       </List>
       <Divider />
+      {isStaff ? (
       <List>
-        {['All mail', Admin_Movie_Section].map((text, index) => (
+        {[Admin_Movie_Section].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -60,8 +64,9 @@ export default function TemporaryDrawer() {
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
-        ))}
+          ))}
       </List>
+      ):<span></span>}
     </Box>
   );
 
@@ -69,7 +74,7 @@ export default function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button style={{backgroundColor: "white",border: "2px solid #fff", borderRadius: "20px"}} onClick={toggleDrawer(anchor, true)}><img src={mickeyLogo} alt="mickey mouse icon" /></Button>
+          <Button style={{backgroundColor: "#fff",border: "2px solid #fff", borderRadius: "20px"}} onClick={toggleDrawer(anchor, true)}><img src={mickeyLogo} alt="mickey mouse icon" /></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

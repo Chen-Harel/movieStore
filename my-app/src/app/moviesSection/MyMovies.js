@@ -53,7 +53,7 @@ const MyMovies = () => {
                 Release date: {movie.release_date}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                <span >Price: {movie.movie_price}</span>
+                <span style={{fontWeight: "bold"}}>Price: ${movie.movie_price}</span>
               </Typography>
             </CardContent>
             <CardActions>
@@ -74,11 +74,10 @@ const MyMovies = () => {
                   <span className="buttonColor">Add to Favorites</span>
                 </CustomizedSnackbars>
               </Button>
-
-              <div>
+              <div className="grow">
                 <span style={{ color: "blue" }}>
-                  {/* {movie.movie_details.slice(0,10)}&nbsp; */}
-                  {MovieDetailsButton}
+                  {movie.movie_details}&nbsp;
+                  {/* {MovieDetailsButton} */}
                 </span>
               </div>
             </CardActions>

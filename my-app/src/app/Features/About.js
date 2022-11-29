@@ -8,7 +8,7 @@ const About = () => {
       <hr />
       <div className="center-items">
         <img src={Walt_Disney_About} alt="Disney" />
-        <div>
+        <div className="disney-font">
           <h1>Disney History</h1>
           <img
             src="https://d23.com/app/uploads/2022/07/giphy-19.gif"
