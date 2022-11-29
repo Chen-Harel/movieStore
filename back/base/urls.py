@@ -22,7 +22,4 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # Register/Signup:
     path('register/', views.createUser),
-    # image upload
-    path('movies/',views.APIViews.as_view(),name='posts_list'),
-
 ]

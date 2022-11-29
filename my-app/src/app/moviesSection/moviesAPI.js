@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 //Asyncronis method to add items to the "database"
 const movieNameURL = "http://127.0.0.1:8000/movies/";
 const getmoviesURL = "http://127.0.0.1:8000/getmovies/";

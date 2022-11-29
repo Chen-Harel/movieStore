@@ -1,7 +1,6 @@
 from urllib import response
 from django.http import JsonResponse
 from django.shortcuts import render
-from stack_data import Serializer
 
 from base.serializer import FavoriteSerializer, APIsSerializer
 from .models import Movie, Favorite, Order
@@ -13,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework import status
 
 
 # Authentication code START
@@ -126,41 +126,3 @@ def buymyfavorites(request):
     print(user_id)
     print(favoritesList)
     return Response(favoritesList)
-
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def addOrder(request):
-#     order= request.data
-#     user = request.user
-#     new_order_id= Order.objects.create(user_id=user)
-#     print(order)
-#     for x in order:
-#         # print(x)
-#         # product_id=x["product_id"]
-#         # print(product_id)
-#         prod_id=Product.objects.get(_id=x["product_id"])
-#         # category_id=Category.objects.get(_id=x["category_id"])
-#         quantity=x["quantity"]
-#         OrderDetail.objects.create(order_id
-
-@api_view(['GET'])
-def getImages(request):
-    res=[]
-    for img in Movie.objects.all():
-        res.append({"movie_name":img.movie_name,
-            "release_date":img.release_date,
-            "movie_price":img.movie_price,
-            "movie_details": img.movie_details,
-            "image":img.image})
-    return JsonResponse(res,safe=False)
-
-class APIViews(APIView):
-    parser_class=(MultiPartParser,FormParser)
-    def post(self,request,*args,**kwargs):
-        api_serializer=APIsSerializer(data=request.data)
-        if api_serializer.is_valid():
-            api_serializer.save()
-            return Response(api_serializer.data,status=status.HTTP_201_CREATED)
-        else:
-            print('error',api_serializer.errors)
-            return Response(api_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
