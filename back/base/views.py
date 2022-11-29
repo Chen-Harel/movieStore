@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from stack_data import Serializer
 
-from base.serializer import FavoriteSerializer
+from base.serializer import FavoriteSerializer, APIsSerializer
 from .models import Movie, Favorite, Order
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
@@ -11,6 +11,9 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
+
 
 # Authentication code START
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -140,3 +143,24 @@ def buymyfavorites(request):
 #         quantity=x["quantity"]
 #         OrderDetail.objects.create(order_id
 
+@api_view(['GET'])
+def getImages(request):
+    res=[]
+    for img in Movie.objects.all():
+        res.append({"movie_name":img.movie_name,
+            "release_date":img.release_date,
+            "movie_price":img.movie_price,
+            "movie_details": img.movie_details,
+            "image":img.image})
+    return JsonResponse(res,safe=False)
+
+class APIViews(APIView):
+    parser_class=(MultiPartParser,FormParser)
+    def post(self,request,*args,**kwargs):
+        api_serializer=APIsSerializer(data=request.data)
+        if api_serializer.is_valid():
+            api_serializer.save()
+            return Response(api_serializer.data,status=status.HTTP_201_CREATED)
+        else:
+            print('error',api_serializer.errors)
+            return Response(api_serializer.errors,status=status.HTTP_400_BAD_REQUEST)

@@ -8,6 +8,7 @@ class Movie(models.Model):
     movie_price = models.IntegerField(null=True, blank=True)
     movie_details = models.TextField(null=True, blank=True)
     movie_id=models.AutoField(primary_key=True,editable=False)
+    image=models.ImageField(upload_to='Posted_images', null=True)
     fields =['movieid','desc','price']
    
     def __str__(self):
